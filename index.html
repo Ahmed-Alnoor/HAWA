@@ -11,11 +11,8 @@
 <meta property="og:description" content="Studios and one, two and three-bedroom apartments in the heart of Tilal City, Sharjah.">
 <meta property="og:image" content="assets/images/facade-front.webp">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E8DDCE'/%3E%3Cpath d='M20 14v36M44 14v36M20 31h24' stroke='%233A2C21' stroke-width='3.4' fill='none'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="preload" href="assets/fonts/Radikal-Light.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/Radikal-Thin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Radikal-UltraThin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/images/hero-sky.webp" fetchpriority="high">
 <link rel="preload" as="image" href="assets/images/hero-building.webp" fetchpriority="high">
 <script>
@@ -31,10 +28,12 @@
   })(document);
 </script>
 <style>
-/* Brand fonts: Radikal (self-hosted from assets/fonts) and Noto Kufi Arabic (Google Fonts) */
-@font-face{font-family:"Radikal";font-weight:200;font-display:swap;src:url("assets/fonts/Radikal-Thin.woff2") format("woff2")}
-@font-face{font-family:"Radikal";font-weight:300 450;font-display:swap;src:url("assets/fonts/Radikal-Light.woff2") format("woff2")}
-@font-face{font-family:"Radikal";font-weight:500 800;font-display:swap;src:url("assets/fonts/Radikal-Bold.woff2") format("woff2")}
+/* Brand fonts, self-hosted from assets/fonts: Radikal (UltraThin, Light, Medium, Bold) and Noto Kufi Arabic (variable, Arabic letters only) */
+@font-face{font-family:"Radikal";font-weight:100 250;font-display:swap;src:url("assets/fonts/Radikal-UltraThin.woff2") format("woff2")}
+@font-face{font-family:"Radikal";font-weight:251 450;font-display:swap;src:url("assets/fonts/Radikal-Light.woff2") format("woff2")}
+@font-face{font-family:"Radikal";font-weight:451 650;font-display:swap;src:url("assets/fonts/Radikal-Medium.woff2") format("woff2")}
+@font-face{font-family:"Radikal";font-weight:651 900;font-display:swap;src:url("assets/fonts/Radikal-Bold.woff2") format("woff2")}
+@font-face{font-family:"Noto Kufi Arabic";font-weight:100 900;font-display:swap;src:url("assets/fonts/NotoKufiArabic.woff2") format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+FB50-FDFF,U+FE70-FEFF,U+200C-200F,U+0020-003F,U+00AB,U+00B7,U+00BB,U+00D7,U+2010-2014,U+2018-201D,U+2022,U+2026}
 
 /* Layout concept: the page opens in the sky. Layers of sky, cloud and building drift at their own speeds; scrolling rises
    through the clouds into a bright white mist where the title appears, then settles into warm light-brown sand

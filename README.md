@@ -9,7 +9,8 @@ Motion runs on GSAP + ScrollTrigger and Lenis smooth scrolling, inlined in the f
 
 - `index.html` is the whole page (HTML + CSS + JS inline, no frameworks).
 - `assets/images/` holds every image the page uses (WebP only; nothing unused is kept).
-- `assets/fonts/` holds Radikal (Thin, Light, Bold) as WOFF2, the same brand files as the District 11 page. Replace them with files of the same names to update the font.
+- `assets/fonts/` holds the brand fonts as WOFF2, converted from the files at the repository root: Radikal UltraThin, Light, Medium
+  and Bold, and Noto Kufi Arabic (variable, Arabic letters only). The page loads no fonts from outside.
 - The uploaded source files (layers, renders, brochure PDFs) stay at the repository root and are not loaded by the page.
 
 Open `index.html` directly, or host it together with the `assets/` folder. Arabic: add `?lang=ar` to the URL, or use the toggle.
@@ -20,7 +21,7 @@ Open `index.html` directly, or host it together with the `assets/` folder. Arabi
   bright white mist, where the title *Live where the city BREATHES* appears letter by letter. The mist then warms into
   the light-brown page.
 - **The rest of the page** sits on warm light-brown sand tones (no pure white). Type is the brand's Radikal: thin capitals
-  for titles, light for text. Arabic uses Noto Kufi Arabic (Google Fonts), also inside Radikal text.
+  for titles, light for text. Arabic uses Noto Kufi Arabic, also inside Radikal text.
 - **Scroll effects on images.** The story images wipe up one after another inside a tall frame. *The Hawa Life* images sit on a curved
   ring that turns as you scroll. The courtyard scene opens to full screen. Feature photos are revealed behind a lifting curtain
   and drift inside their frames, and the images lean slightly with the scroll speed.
