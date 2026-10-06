@@ -1,7 +1,7 @@
 # HAWA
 Hawa Landing Page
 
-Single-file, bilingual (EN / AR, RTL) lead-generation landing page for **Hawa The Residences** by Al Marwan Developments,
+Single-file, bilingual (EN / AR, RTL) lead-generation landing page for **Hawa Residence** (مساكن هواء) by Al Marwan Developments,
 Tilal City, Sharjah: studio, 1 & 2 bedroom apartments from AED 592,000, 5% down payment, 1% monthly payments,
 handover Q4 2028. Built on the same structure as the District 11 landing page. Motion runs on GSAP + ScrollTrigger and Lenis
 smooth scrolling, inlined in the file (GSAP Standard License, Lenis MIT).
