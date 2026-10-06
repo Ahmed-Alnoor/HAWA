@@ -13,7 +13,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23E8DDCE'/%3E%3Cpath d='M20 14v36M44 14v36M20 31h24' stroke='%233A2C21' stroke-width='3.4' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Noto+Kufi+Arabic:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500&family=Aref+Ruqaa&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/Radikal-Light.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Radikal-Thin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/images/hero-sky.webp" fetchpriority="high">
 <link rel="preload" as="image" href="assets/images/hero-building.webp" fetchpriority="high">
 <script>
@@ -29,9 +31,14 @@
   })(document);
 </script>
 <style>
+/* Brand fonts: Radikal (self-hosted from assets/fonts) and Noto Kufi Arabic (Google Fonts) */
+@font-face{font-family:"Radikal";font-weight:200;font-display:swap;src:url("assets/fonts/Radikal-Thin.woff2") format("woff2")}
+@font-face{font-family:"Radikal";font-weight:300 450;font-display:swap;src:url("assets/fonts/Radikal-Light.woff2") format("woff2")}
+@font-face{font-family:"Radikal";font-weight:500 800;font-display:swap;src:url("assets/fonts/Radikal-Bold.woff2") format("woff2")}
+
 /* Layout concept: the page opens in the sky. Layers of sky, cloud and building drift at their own speeds; scrolling rises
    through the clouds into a bright white mist where the title appears, then settles into warm light-brown sand
-   for the rest of the page. Type pairs a light display serif with a script accent and a clean sans. */
+   for the rest of the page. Type is the brand's Radikal (thin capitals for titles) and Noto Kufi Arabic. */
 :root{
   --sand:#E8DDCE;
   --sand-2:#DFD1BF;
@@ -51,20 +58,16 @@
   --g-page-r:linear-gradient(180deg,#E2D5C4 0%,#E8DDCE 100%);
   --shade:46,33,23;          /* warm brown used for gradients over imagery */
   --shadow:0 30px 70px -38px rgba(60,42,28,.42);
-  --serif:"Cormorant Garamond","Noto Naskh Arabic",Georgia,serif;
-  --script:"Pinyon Script","Aref Ruqaa",cursive;
-  --font:"Jost","Noto Kufi Arabic","Helvetica Neue",Arial,sans-serif;
-  --ar:"Noto Kufi Arabic","Jost",Tahoma,sans-serif;
-  --ar-serif:"Noto Naskh Arabic","Noto Kufi Arabic",serif;
-  --ar-script:"Aref Ruqaa","Noto Naskh Arabic",serif;
+  --font:"Radikal","Noto Kufi Arabic","Helvetica Neue",Arial,sans-serif;   /* Arabic letters inside Radikal text use the brand Arabic font */
+  --ar:"Noto Kufi Arabic","Radikal",Tahoma,sans-serif;
   --out:cubic-bezier(.16,1,.3,1);
   --r:2px;
   --hdr:64px; --gut:16px;
-  --rail:0px; --lm:var(--gut);
+  --lm:var(--gut);
   color-scheme:light;
 }
 @media (min-width:768px){:root{--gut:32px;--hdr:76px}}
-@media (min-width:1100px){:root{--gut:48px}}
+@media (min-width:1100px){:root{--gut:48px;--lm:max(var(--gut),calc((100vw - 1240px) / 2))}}
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;background:var(--sand)}
@@ -91,21 +94,18 @@ html[dir=rtl] .ltr{text-align:right}
 .eyebrow{display:inline-flex;align-items:center;gap:12px;font:500 10.5px/1.4 var(--font);letter-spacing:.3em;text-transform:uppercase;color:var(--bronze)}
 .eyebrow::before{content:"";width:28px;height:1px;background:currentColor;flex:none}
 html[lang=ar] .eyebrow{font:500 13px/1.5 var(--ar)}
-.h2{font:300 clamp(2rem,2.8vw + .9rem,4rem)/1.06 var(--serif);letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
-.h2 em{font-style:italic;color:var(--bronze)}
-html[lang=ar] .h2{font:500 clamp(1.6rem,2.2vw + .8rem,3rem)/1.45 var(--ar-serif)}
-html[lang=ar] .h2 em{font-style:normal}
+.h2{font:300 clamp(1.8rem,2.3vw + .8rem,3.3rem)/1.12 var(--font);letter-spacing:-.015em;color:var(--ink);text-wrap:balance}
+.h2 em{font-style:normal;color:var(--bronze)}
+html[lang=ar] .h2{font:400 clamp(1.5rem,1.9vw + .7rem,2.6rem)/1.55 var(--ar)}
 .lead{font-size:clamp(1rem,.35vw + .92rem,1.12rem);line-height:1.75;color:var(--ink-2);max-width:48ch}
 
-/* display titles: a script line resting on large serif capitals (letters rise one by one) */
+/* display titles: a light line over large thin capitals (letters rise one by one) */
 .disp{display:flex;flex-direction:column;align-items:flex-start;color:var(--ink)}
-.disp .scr{position:relative;z-index:1;display:block;margin:0 0 -.22em .5em;font:400 clamp(2.1rem,3.6vw + .9rem,4.8rem)/1.1 var(--script);color:var(--bronze);white-space:nowrap}
-.disp .cap{display:block;font:300 clamp(3.1rem,8.2vw + .4rem,10rem)/.9 var(--serif);letter-spacing:.015em;text-transform:uppercase;white-space:nowrap}
+.disp .scr{position:relative;z-index:1;display:block;margin:0 0 .3em;font:300 clamp(1.15rem,1.1vw + .75rem,1.9rem)/1.3 var(--font);letter-spacing:.02em;color:var(--bronze);white-space:nowrap}
+.disp .cap{display:block;font:200 clamp(2.8rem,7vw + .3rem,8.6rem)/.95 var(--font);letter-spacing:.035em;text-transform:uppercase;white-space:nowrap}
 .disp.c{align-items:center;text-align:center}
-.disp.c .scr{margin-inline:0 18%}
-html[lang=ar] .disp .scr{margin:0 0 .05em;font:400 clamp(1.7rem,2.6vw + .8rem,3.4rem)/1.4 var(--ar-script)}
-html[lang=ar] .disp .cap{font:500 clamp(2.6rem,5.6vw + .6rem,6.6rem)/1.3 var(--ar-serif);letter-spacing:0}
-html[lang=ar] .disp.c .scr{margin-inline:0}
+html[lang=ar] .disp .scr{margin:0 0 .15em;font:300 clamp(1.15rem,1vw + .8rem,1.8rem)/1.6 var(--ar)}
+html[lang=ar] .disp .cap{font:300 clamp(2.3rem,4.8vw + .5rem,5.8rem)/1.4 var(--ar);letter-spacing:0}
 .chw{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .02em .1em;margin:-.08em -.02em -.1em}
 .chw>span{display:inline-block;transform-origin:0 100%}
 
@@ -154,14 +154,15 @@ html[lang=ar] .hdr .btn{font-size:13px}
 /* ---------- sky intro ---------- */
 .sky{position:relative;background:var(--mist)}
 .sky-pin{position:relative}
-.sky-stage{position:relative;height:100svh;min-height:520px;overflow:hidden;background:#C9D9EE;isolation:isolate}
+.sky-stage{position:relative;height:100vh;height:100lvh;min-height:520px;overflow:hidden;background:#C9D9EE;isolation:isolate;--tb:calc(100lvh - 100svh)}
+@supports not (height:100lvh){.sky-stage{--tb:0px}}
 .ly,.lp,.lc{position:absolute;inset:0;pointer-events:none}
 .ly-sky img{position:absolute;left:0;top:-16%;width:100%;height:132%;max-width:none;object-fit:cover;object-position:50% 38%}
 .sky-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(var(--shade),.42) 0%,rgba(var(--shade),.12) 26%,rgba(var(--shade),0) 46%)}
 /* cloud bands: each tile is the cloud plus its mirror, so the band repeats without a seam while it drifts */
 .ly-cl{top:auto;bottom:var(--b,0);height:var(--h);transform-origin:50% 100%}
 .ly-cl .lp{overflow:visible}
-.cl-tr{position:absolute;top:0;bottom:0;left:0;width:calc(100% + var(--tw,3000px));background-repeat:repeat-x;background-position:0 100%;background-size:auto 100%;will-change:transform}
+.cl-tr{position:absolute;top:0;bottom:0;left:0;width:calc(100% + var(--tw,3000px));background-repeat:repeat-x;background-position:0 100%;background-size:var(--tw,auto) 100%;will-change:transform}
 .c-back{--h:44%;z-index:2;opacity:.95}
 .ly-title{z-index:3;color:#fff}
 .ly-title .lc{display:flex;flex-direction:column;align-items:center;padding-top:calc(var(--hdr) + 9svh)}
@@ -171,17 +172,19 @@ html[lang=ar] .hdr .btn{font-size:13px}
 html[lang=ar] .sky-sub{font:500 13px/1.6 var(--ar)}
 .ly-bld{z-index:4}
 .ly-bld img{position:absolute;left:50%;bottom:0;width:max(100%,56svh);max-width:none;height:auto;transform:translateX(-50%)}
+.sky-fog{position:absolute;inset:auto 0 0;height:46%;z-index:5;pointer-events:none;background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.94) 24%,rgba(255,255,255,.55) 52%,rgba(255,255,255,0) 100%)}
 .c-mid{--h:33%;z-index:5}
 .c-front{--h:26%;z-index:6}
 .c-front2{--h:30%;--b:-13%;z-index:7}
-.sky-haze{position:absolute;inset:0;z-index:8;background:linear-gradient(180deg,#EEE8DF 0%,#FAF8F4 46%,var(--mist) 100%);opacity:0;pointer-events:none}
+.sky-haze{position:absolute;inset:0;z-index:8;background:linear-gradient(180deg,#EDE3D6 0%,#F6F1EA 42%,var(--mist) 100%);opacity:0;pointer-events:none}
 .c-veil{--h:58%;z-index:9;opacity:0}
-.c-veil .cl-tr{filter:drop-shadow(0 18px 30px rgba(120,96,72,.16))}
+.c-veil .cl-tr{filter:sepia(.16) saturate(1.3) drop-shadow(0 18px 30px rgba(120,96,72,.14))}
+.c-veil.top .cl-tr{filter:sepia(.42) saturate(1.7) brightness(.97)}
 .c-veil.bot{-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 38%);mask-image:linear-gradient(0deg,transparent 0,#000 38%)}
 .c-veil.top{--h:42%;top:-4%;bottom:auto}
 .c-veil.top .lc{transform:scaleY(-1)}
 .c-veil.top{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%);mask-image:linear-gradient(180deg,transparent 0,#000 30%)}
-.sky-cue{position:absolute;z-index:10;left:50%;bottom:clamp(18px,4svh,40px);display:flex;flex-direction:column;align-items:center;gap:10px;transform:translateX(-50%);color:var(--ink);font:500 9.5px/1 var(--font);letter-spacing:.32em;text-transform:uppercase}
+.sky-cue{position:absolute;z-index:10;left:50%;bottom:calc(clamp(18px,4svh,40px) + var(--tb));display:flex;flex-direction:column;align-items:center;gap:10px;transform:translateX(-50%);color:var(--ink);font:500 9.5px/1 var(--font);letter-spacing:.32em;text-transform:uppercase}
 html[lang=ar] .sky-cue{font:500 12px/1 var(--ar)}
 .sky-cue .ring{position:relative;width:64px;height:64px}
 .sky-cue svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
@@ -191,7 +194,7 @@ html[lang=ar] .sky-cue{font:500 12px/1 var(--ar)}
 @keyframes cue{to{top:100%}}
 /* the title that appears in the mist */
 .sky-end{position:relative;z-index:11;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(72px,12vw,140px) var(--gut);background:var(--mist)}
-.sky-end .disp .cap{font-size:clamp(3.6rem,15.5vw,12.5rem)}
+.sky-end .disp .cap{font-size:clamp(2.9rem,12.6vw,10.8rem)}
 .sky-end .eyebrow{color:var(--bronze)}
 .sky-end .eyebrow::after{content:"";width:28px;height:1px;background:currentColor;flex:none}
 .sky-end .disp{margin-top:clamp(16px,3svh,30px)}
@@ -223,8 +226,8 @@ html[lang=ar] .sky-cue{font:500 12px/1 var(--ar)}
 .card-k{display:inline-flex;align-items:center;gap:10px;font:500 10px/1 var(--font);letter-spacing:.26em;text-transform:uppercase;color:var(--bronze)}
 html[lang=ar] .card-k{font:500 12.5px/1 var(--ar)}
 .card-k::before{content:"";width:6px;height:6px;background:var(--bronze);transform:rotate(45deg)}
-.card-t{margin-top:10px;font:400 30px/1.08 var(--serif);letter-spacing:-.005em}
-html[lang=ar] .card-t{font:500 23px/1.45 var(--ar-serif)}
+.card-t{margin-top:10px;font:300 25px/1.15 var(--font);letter-spacing:-.01em}
+html[lang=ar] .card-t{font:400 21px/1.45 var(--ar)}
 .f{display:block;margin-top:12px;min-width:0}
 .f>span{display:block;margin-bottom:6px;font:500 9.5px/1 var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-2)}
 html[lang=ar] .f>span{font:400 12.5px/1.2 var(--ar)}
@@ -257,8 +260,8 @@ html[dir=rtl] .tel input{text-align:right}
 .thanks rect,.thanks path{stroke-dasharray:1;stroke-dashoffset:1}
 .is-done .thanks rect{animation:draw 1s .1s forwards var(--out)}
 .is-done .thanks path{animation:draw .7s .7s forwards var(--out)}
-.thanks h3{font:400 32px/1.05 var(--serif)}
-html[lang=ar] .thanks h3{font:500 24px/1.4 var(--ar-serif)}
+.thanks h3{font:300 26px/1.1 var(--font)}
+html[lang=ar] .thanks h3{font:400 22px/1.4 var(--ar)}
 .thanks p{max-width:32ch;margin:8px auto 16px;font-size:14px;color:var(--ink-2)}
 .thanks-cta{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -268,12 +271,12 @@ html[lang=ar] .thanks h3{font:500 24px/1.4 var(--ar-serif)}
 .reg{position:relative;padding:clamp(80px,12vw,150px) 0 clamp(72px,10vw,130px);background:linear-gradient(180deg,var(--mist) 0,#F0E8DD 180px,var(--sand) 520px,#E2D5C4 100%);overflow:hidden}
 .reg-grid{position:relative;display:grid;gap:clamp(48px,6vw,72px);align-items:start}
 .reg .disp{margin-top:22px}
-.reg .disp .cap{font-size:clamp(2.8rem,5.4vw,6.6rem)}
-.res-head .disp .cap{font-size:clamp(2.6rem,5.2vw,6.4rem)}
-.statement{margin-top:clamp(28px,4vw,44px);max-width:30ch;font:300 clamp(1.45rem,1.7vw + .9rem,2.55rem)/1.3 var(--serif);color:var(--ink)}
-html[lang=ar] .statement{font:400 clamp(1.25rem,1.4vw + .8rem,2rem)/1.75 var(--ar-serif);max-width:34ch}
+.reg .disp .cap{font-size:clamp(2.4rem,4.7vw,5.6rem)}
+.res-head .disp .cap{font-size:clamp(2.2rem,4.5vw,5.4rem)}
+.statement{margin-top:clamp(28px,4vw,44px);max-width:30ch;font:300 clamp(1.3rem,1.4vw + .8rem,2.25rem)/1.38 var(--font);letter-spacing:-.01em;color:var(--ink)}
+html[lang=ar] .statement{font:300 clamp(1.15rem,1.2vw + .75rem,1.8rem)/1.85 var(--ar);max-width:34ch}
 .minis{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:clamp(40px,5vw,60px);padding-top:28px;border-top:1px solid var(--line-2)}
-.mini b{display:block;direction:ltr;font:300 clamp(2.2rem,1.6vw + 1.2rem,3.3rem)/1 var(--serif);color:var(--ink);white-space:nowrap}
+.mini b{display:block;direction:ltr;font:200 clamp(2rem,1.5vw + 1rem,3rem)/1 var(--font);color:var(--ink);white-space:nowrap}
 html[dir=rtl] .mini b{text-align:right}
 .mini b small{font-size:.45em;font-family:var(--font);font-weight:400;color:var(--bronze);margin-inline-start:4px}
 .mini>span{display:block;margin-top:10px;font:500 9.5px/1.4 var(--font);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
@@ -291,8 +294,8 @@ html[lang=ar] .mini>span{font:400 12.5px/1.4 var(--ar)}
 .story-cap{position:absolute;z-index:2;left:var(--gut);right:var(--gut);bottom:calc(var(--barh) + clamp(28px,6vh,56px))}
 .story-cap .n{display:block;font:500 10.5px/1 var(--font);letter-spacing:.3em;text-transform:uppercase;color:rgba(243,236,226,.85)}
 html[lang=ar] .story-cap .n{font:500 13px/1 var(--ar)}
-.story-cap h3{margin-top:14px;max-width:15ch;font:300 clamp(2.1rem,3.4vw + .9rem,4.4rem)/1.02 var(--serif)}
-html[lang=ar] .story-cap h3{font:500 clamp(1.6rem,2.6vw + .7rem,3.2rem)/1.45 var(--ar-serif)}
+.story-cap h3{margin-top:14px;max-width:15ch;font:300 clamp(1.8rem,2.6vw + .8rem,3.6rem)/1.08 var(--font);letter-spacing:-.015em}
+html[lang=ar] .story-cap h3{font:400 clamp(1.5rem,2.1vw + .6rem,2.7rem)/1.5 var(--ar)}
 .story-cap p{margin-top:14px;max-width:36ch;font-size:clamp(.95rem,.4vw + .85rem,1.1rem);line-height:1.65;color:rgba(243,236,226,.9)}
 .story-head{display:none}
 .story-prog{display:none}
@@ -304,8 +307,8 @@ html[dir=rtl].motion .story-prog{right:auto;left:var(--gut)}
 .story-prog .bar i{position:absolute;inset:0;background:currentColor;transform-origin:left;transform:scaleX(.2)}
 @media (min-width:1100px){
   .story-panel{color:var(--ink)}
-  .sp-media{inset:calc(var(--hdr) + 24px) calc(var(--rail) + var(--lm)) 28px auto;width:min(36vw,calc((100svh - var(--hdr) - 52px) * .72));box-shadow:var(--shadow)}
-  html[dir=rtl] .sp-media{inset:calc(var(--hdr) + 24px) auto 28px calc(var(--rail) + var(--lm))}
+  .sp-media{inset:calc(var(--hdr) + 24px) var(--lm) 28px auto;width:min(36vw,calc((100svh - var(--hdr) - 52px) * .72));box-shadow:var(--shadow)}
+  html[dir=rtl] .sp-media{inset:calc(var(--hdr) + 24px) auto 28px var(--lm)}
   .sp-media::after{display:none}
   .story-cap{left:var(--lm);right:auto;bottom:16svh;width:min(38vw,520px)}
   html[dir=rtl] .story-cap{left:auto;right:var(--lm)}
@@ -313,7 +316,7 @@ html[dir=rtl].motion .story-prog{right:auto;left:var(--gut)}
   .story-cap p{color:var(--ink-2)}
   .story-head{position:absolute;z-index:21;left:var(--lm);top:calc(var(--hdr) + 7svh);display:block;width:min(38vw,520px);pointer-events:none}
   html[dir=rtl] .story-head{left:auto;right:var(--lm)}
-  .story-head .disp .cap{font-size:clamp(2.6rem,3.8vw,4.8rem)}
+  .story-head .disp .cap{font-size:clamp(2.2rem,3.3vw,4.1rem)}
   .motion .story-prog{right:auto;left:var(--lm);top:auto;bottom:calc(16svh - 56px);color:var(--ink)}
   html[dir=rtl].motion .story-prog{left:auto;right:var(--lm)}
   .story-prog .bar{background:var(--line-2)}
@@ -323,22 +326,21 @@ html[dir=rtl].motion .story-prog{right:auto;left:var(--gut)}
 .life{position:relative;background:var(--sand);overflow:hidden}
 .life-pin{position:relative;display:flex;flex-direction:column;justify-content:center;gap:clamp(10px,2vh,24px);min-height:100svh;padding:calc(var(--hdr) + 16px) 0 calc(var(--barh) + 20px)}
 .life-head{display:flex;flex-direction:column;align-items:center;text-align:center}
-.life-head .disp .cap{font-size:clamp(3rem,7vw,8.4rem)}
+.life-head .disp .cap{font-size:clamp(2.8rem,6.2vw,7.4rem)}
 .drum-stage{position:relative;height:clamp(300px,52svh,640px);perspective:1500px;perspective-origin:50% 50%}
 .drum{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
 .cy-card{position:absolute;transform-style:preserve-3d}
 .cy-s{position:absolute;left:0;top:0;background-color:var(--sand-3);background-repeat:no-repeat;-webkit-backface-visibility:hidden;backface-visibility:hidden;outline:1px solid transparent}
 .cy-card img{display:none}
 .life-cap{display:flex;align-items:baseline;justify-content:center;gap:18px;min-height:2.6em;text-align:center}
-.life-cap b{font:400 clamp(1.4rem,1.2vw + 1rem,2.1rem)/1.2 var(--serif)}
-html[lang=ar] .life-cap b{font:500 clamp(1.15rem,1vw + .8rem,1.6rem)/1.5 var(--ar-serif)}
+.life-cap b{font:300 clamp(1.1rem,.8vw + .9rem,1.6rem)/1.3 var(--font)}
+html[lang=ar] .life-cap b{font:400 clamp(1.05rem,.8vw + .8rem,1.45rem)/1.6 var(--ar)}
 .life-cap span{font:500 11px/1 var(--font);letter-spacing:.2em;color:var(--bronze)}
 /* without motion: a plain row of images to swipe */
 .js:not(.motion) .drum-stage,.no-js .drum-stage{height:auto;perspective:none}
 .js:not(.motion) .drum,.no-js .drum{position:static;width:auto;height:auto;display:flex;gap:12px;overflow-x:auto;padding:0 var(--gut);scroll-snap-type:x mandatory}
 .js:not(.motion) .cy-card,.no-js .cy-card{position:relative;flex:none;width:min(70vw,360px);scroll-snap-align:start}
 .js:not(.motion) .cy-card img,.no-js .cy-card img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
-@media (min-width:1280px){.drum-stage,.life-head,.life-cap{margin-right:var(--rail)}html[dir=rtl] .drum-stage,html[dir=rtl] .life-head,html[dir=rtl] .life-cap{margin-right:0;margin-left:var(--rail)}.life-head.wrap{width:auto;max-width:none;margin-left:0}html[dir=rtl] .life-head.wrap{margin-right:0}}
 
 /* ---------- full-page scene ---------- */
 .scene{position:relative;height:100svh;min-height:560px;overflow:hidden;color:#fff;background:var(--sand)}
@@ -348,10 +350,9 @@ html[lang=ar] .life-cap b{font:500 clamp(1.15rem,1vw + .8rem,1.6rem)/1.5 var(--a
 .scene-cap{position:absolute;z-index:2;left:0;right:0;top:calc(var(--hdr) + clamp(28px,7vh,72px))}
 .scene-cap .n{display:block;font:500 10.5px/1 var(--font);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.88)}
 html[lang=ar] .scene-cap .n{font:500 13px/1 var(--ar)}
-.scene-cap h3{margin-top:14px;max-width:15ch;font:300 clamp(2.2rem,4vw + .8rem,5.4rem)/1.02 var(--serif);text-shadow:0 2px 30px rgba(var(--shade),.25)}
-.scene-cap h3 em{font-style:italic}
-html[lang=ar] .scene-cap h3{font:500 clamp(1.7rem,3vw + .6rem,3.8rem)/1.4 var(--ar-serif)}
-html[lang=ar] .scene-cap h3 em{font-style:normal}
+.scene-cap h3{margin-top:14px;max-width:15ch;font:300 clamp(2rem,3.2vw + .7rem,4.4rem)/1.06 var(--font);letter-spacing:-.015em;text-shadow:0 2px 30px rgba(var(--shade),.25)}
+.scene-cap h3 em{font-style:normal;font-weight:200}
+html[lang=ar] .scene-cap h3{font:400 clamp(1.6rem,2.6vw + .6rem,3.4rem)/1.45 var(--ar)}
 .scene-cap .btn{margin-top:24px}
 
 /* ---------- feature rows: courtyards and retail ---------- */
@@ -394,8 +395,8 @@ html[lang=ar] .tab{font:500 13.5px/1 var(--ar)}
 .res-info{order:2}
 .res-info .k{font:500 10.5px/1 var(--font);letter-spacing:.28em;text-transform:uppercase;color:var(--bronze)}
 html[lang=ar] .res-info .k{font:500 13px/1 var(--ar)}
-.res-info h3{margin-top:12px;font:300 clamp(2.4rem,2.6vw + 1.2rem,4.2rem)/1 var(--serif)}
-html[lang=ar] .res-info h3{font:500 clamp(1.8rem,2vw + .9rem,3rem)/1.4 var(--ar-serif)}
+.res-info h3{margin-top:12px;font:200 clamp(2.2rem,2.2vw + 1.1rem,3.6rem)/1.05 var(--font)}
+html[lang=ar] .res-info h3{font:400 clamp(1.7rem,1.8vw + .8rem,2.7rem)/1.45 var(--ar)}
 .res-info p{margin-top:16px;max-width:40ch;color:var(--ink-2)}
 .vars{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
 .var{height:34px;min-width:44px;padding:0 14px;border:1px solid var(--line-2);border-radius:var(--r);font:500 10.5px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
@@ -405,15 +406,29 @@ html[lang=ar] .var{font:500 12.5px/1 var(--ar)}
 .rooms li{padding:8px 12px;background:rgba(243,236,226,.7);border:1px solid var(--line);font-size:13.5px;color:var(--brown)}
 .res-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .res-note{margin-top:14px;font-size:12px;color:var(--ink-2)}
-.plan-wrap{position:relative;perspective:1600px}
-.plan-sheet{position:relative;display:grid;place-items:center;aspect-ratio:1/1;padding:clamp(18px,3vw,40px);background:var(--cream);border:1px solid var(--line);box-shadow:0 50px 90px -50px rgba(60,42,28,.5);transform-style:preserve-3d}
-.plan-sheet img{width:100%;height:100%;object-fit:contain;-webkit-user-drag:none;user-select:none}
+.plan-wrap{position:relative}
+.plan-sheet{--pp:clamp(18px,3vw,40px);position:relative;display:block;aspect-ratio:1/1;background:var(--cream);border:1px solid var(--line);box-shadow:0 50px 90px -50px rgba(60,42,28,.5)}
+.plan-sheet img{position:absolute;left:var(--pp);top:var(--pp);width:calc(100% - 2*var(--pp));height:calc(100% - 2*var(--pp));object-fit:contain;-webkit-user-drag:none;user-select:none}
 .plan-photo{position:absolute;z-index:2;right:-18px;bottom:-34px;width:min(24%,140px);aspect-ratio:3/4;overflow:hidden;border:5px solid var(--sand);box-shadow:var(--shadow)}
 .plan-photo img{width:100%;height:100%;object-fit:cover}
 html[dir=rtl] .plan-photo{right:auto;left:-10px}
 .plan-zoom{position:absolute;z-index:3;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:var(--r);background:var(--sand);border:1px solid var(--line);font:500 9.5px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--brown)}
 html[lang=ar] .plan-zoom{font:500 12px/1 var(--ar)}
 html[dir=rtl] .plan-zoom{left:auto;right:12px}
+@media (max-width:767px){
+  .res{padding:72px 0 80px}
+  .res-head{gap:18px;margin-bottom:22px}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;overflow:visible}
+  .tab{padding:0 8px;letter-spacing:.12em}
+  .plan-sheet{--pp:14px;aspect-ratio:auto;height:min(52svh,96vw)}
+  .plan-photo{display:none}
+  .res-grid{gap:22px}
+  .res-info h3{font-size:2rem}
+  .res-info p{margin-top:10px}
+  .vars,.rooms{margin-top:14px}
+  .res-cta{margin-top:18px}
+  .res-cta .btn{flex:1 1 auto}
+}
 @media (min-width:1100px){
   .res-head{grid-template-columns:minmax(0,1fr) auto}
   .res-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px}
@@ -423,39 +438,51 @@ html[dir=rtl] .plan-zoom{left:auto;right:12px}
 /* ---------- in every residence ---------- */
 .am{padding:clamp(88px,12vw,150px) 0;background:var(--sand-2)}
 .am-head{display:grid;gap:18px;margin-bottom:clamp(36px,5vw,56px)}
-.am-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;perspective:900px}
-.am-i{display:flex;flex-direction:column;gap:16px;min-height:150px;padding:22px 16px;background:rgba(243,236,226,.6);border:1px solid var(--line);transform-style:preserve-3d;transition:box-shadow .5s var(--out),background-color .5s}
+.am-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.am-i{display:flex;flex-direction:column;gap:16px;min-height:150px;padding:22px 16px;background:rgba(243,236,226,.6);border:1px solid var(--line);transition:box-shadow .5s var(--out),background-color .5s}
 .am-i:hover{box-shadow:var(--shadow);background:var(--cream)}
-.am-i svg{width:34px;height:34px;fill:none;stroke:var(--bronze);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;transform:translateZ(20px)}
-.am-i h3{margin-top:auto;font:400 15.5px/1.35 var(--font);transform:translateZ(14px)}
+.am-i svg{width:34px;height:34px;fill:none;stroke:var(--bronze);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.am-i h3{margin-top:auto;font:400 15.5px/1.35 var(--font)}
 html[lang=ar] .am-i h3{font:500 14.5px/1.55 var(--ar)}
 @media (min-width:768px){.am-grid{grid-template-columns:repeat(4,1fr);gap:14px}.am-i{min-height:190px;padding:28px 24px}}
+@media (hover:hover) and (pointer:fine){.am-grid{perspective:900px}.am-i{transform-style:preserve-3d}.am-i svg{transform:translateZ(20px)}.am-i h3{transform:translateZ(14px)}}
 
 /* ---------- location ---------- */
 .loc{position:relative;padding:clamp(88px,11vw,150px) 0;background:var(--g-page)}
 .loc-grid{display:grid;gap:36px;align-items:center}
-.map-box{position:relative;aspect-ratio:1500/2142;max-height:86svh;margin-inline:auto;overflow:hidden;box-shadow:var(--shadow);background:#E6E1DB}
-.map-box img{width:100%;height:100%;object-fit:cover;filter:sepia(.28) saturate(.9)}
-.map-pin{position:absolute;left:80.3%;top:61.3%;width:14px;height:14px;background:var(--bronze);border:2px solid var(--cream);transform:translate(-50%,-50%) rotate(45deg)}
-.map-pin::before,.map-pin::after{content:"";position:absolute;inset:-2px;border:1.5px solid var(--bronze);animation:ping2 2.6s infinite}
-.map-pin::after{animation-delay:1.3s}
-@keyframes ping2{0%{transform:scale(1);opacity:1}100%{transform:scale(7);opacity:0}}
+.map-box{position:relative;aspect-ratio:4/5;max-height:72svh;width:100%;margin-inline:auto;overflow:hidden;box-shadow:var(--shadow);background:var(--sand-3)}
+.map-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.35) sepia(.28) saturate(.9) contrast(.96)}
+.map-shield{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-start;justify-content:center;padding-top:16px;background:transparent;cursor:pointer}
+.map-shield span{padding:9px 14px;background:rgba(243,236,226,.92);border:1px solid var(--line);font:500 10px/1 var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--brown);opacity:0;transition:opacity .4s}
+html[lang=ar] .map-shield span{font:500 12.5px/1 var(--ar)}
+.map-shield:hover span,.map-shield:focus-visible span{opacity:1}
+@media (hover:none){.map-shield span{opacity:1}}
+.map-box.is-live .map-shield{display:none}
+.map-card{position:absolute;z-index:3;left:12px;right:12px;bottom:12px;display:grid;gap:4px;padding:16px 16px 14px;background:rgba(243,236,226,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);box-shadow:var(--shadow)}
+.map-card .k{font:500 9.5px/1 var(--font);letter-spacing:.24em;text-transform:uppercase;color:var(--bronze)}
+html[lang=ar] .map-card .k{font:500 12px/1.2 var(--ar)}
+.map-card b{margin-top:4px;font:300 19px/1.25 var(--font)}
+html[lang=ar] .map-card b{font:400 16px/1.5 var(--ar)}
+.map-card>span:not(.k){font-size:13px;color:var(--ink-2)}
+.map-card .btn{justify-self:start;margin-top:10px;min-height:42px;padding:0 18px;font-size:10.5px}
+html[lang=ar] .map-card .btn{font-size:13px}
+@media (min-width:768px){.map-card{right:auto;width:330px;left:16px;bottom:16px}html[dir=rtl] .map-card{left:auto;right:16px}}
 .prox{margin:22px 0 26px;border-top:1px solid var(--line-2)}
 .prox li{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-2);font-size:15px}
 .prox li b{flex:none;font-weight:500;color:var(--bronze)}
-@media (min-width:900px){.loc-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px}.loc-grid .map-box{order:2;width:100%}}
+@media (min-width:900px){.loc-grid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:80px}.loc-grid .map-box{order:2;aspect-ratio:1/1;max-height:min(78svh,660px)}}
 
 /* ---------- developer ---------- */
 .dev{padding:clamp(64px,8vw,100px) 0;background:var(--sand-2);border-top:1px solid var(--line)}
 .dev-row{display:grid;gap:26px;align-items:center}
 .amd{display:block;color:var(--brown);width:210px}
 .amd svg{width:100%;height:auto;aspect-ratio:1860/392}
-.dev-q{font:300 clamp(1.3rem,1.2vw + .9rem,1.9rem)/1.4 var(--serif);color:var(--ink);max-width:40ch}
-html[lang=ar] .dev-q{font:400 clamp(1.1rem,1vw + .8rem,1.5rem)/1.8 var(--ar-serif)}
+.dev-q{font:300 clamp(1.1rem,.9vw + .85rem,1.55rem)/1.5 var(--font);color:var(--ink);max-width:42ch}
+html[lang=ar] .dev-q{font:400 clamp(1.05rem,.9vw + .75rem,1.4rem)/1.85 var(--ar)}
 .dev-i small{display:block;font:500 9.5px/1.4 var(--font);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
 html[lang=ar] .dev-i small{font:400 12.5px/1.4 var(--ar)}
-.dev-i b{display:block;margin-top:6px;font:400 24px/1.2 var(--serif)}
-html[lang=ar] .dev-i b{font:500 18px/1.5 var(--ar-serif)}
+.dev-i b{display:block;margin-top:6px;font:300 21px/1.25 var(--font)}
+html[lang=ar] .dev-i b{font:400 17px/1.55 var(--ar)}
 @media (min-width:900px){.dev-row{grid-template-columns:auto minmax(0,1fr) auto;gap:64px}}
 
 /* ---------- final ---------- */
@@ -468,7 +495,7 @@ html[dir=rtl] .final::before{background:linear-gradient(270deg,rgba(var(--shade)
 .final .eyebrow{color:#fff}
 .final .disp{margin-top:18px;color:#fff}
 .final .disp .scr{color:#F0E2CF}
-.final .disp .cap{font-size:clamp(2.8rem,5.6vw + .4rem,7rem)}
+.final .disp .cap{font-size:clamp(2.4rem,4.9vw + .3rem,6rem)}
 .final .disp,.final .contacts{text-shadow:0 2px 24px rgba(var(--shade),.35)}
 .contacts{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:28px;font:400 15px/1 var(--font)}
 .contacts a{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.94)}
@@ -484,43 +511,6 @@ html[dir=rtl] .final::before{background:linear-gradient(270deg,rgba(var(--shade)
 .disc{margin-top:26px;padding-top:18px;border-top:1px solid var(--line-2);font-size:11px;line-height:1.6}
 @media (min-width:900px){.ftr-row{grid-template-columns:auto 1fr auto;gap:48px}}
 @media (min-width:1280px){.ftr{padding-bottom:40px}}
-
-/* ---------- right rail: content stays clear of the compact form ---------- */
-@media (min-width:1280px){
-  :root{--rail:330px;--lm:max(var(--gut),calc((100vw - 1240px - var(--rail)) / 2))}
-  main>section:not(.sky):not(.story):not(.scene):not(.life) .wrap,.ftr .wrap{width:min(1240px,calc(100vw - var(--lm) - var(--rail) - 24px));max-width:none;margin-left:var(--lm);margin-right:auto}
-  html[dir=rtl] main>section:not(.sky):not(.story):not(.scene):not(.life) .wrap,html[dir=rtl] .ftr .wrap{margin-left:auto;margin-right:var(--lm)}
-}
-
-/* ---------- floating: compact form (desktop, right side) ---------- */
-.dock{position:fixed;z-index:55;right:24px;top:50%;width:296px;translate:0 -50%;transform:translateX(calc(100% + 48px));opacity:0;visibility:hidden;transition:transform .9s var(--out),opacity .6s,visibility 0s .9s}
-.dock.is-on{transform:none;opacity:1;visibility:visible;transition:transform .9s var(--out),opacity .6s}
-.dock.is-on.is-min{transform:translateX(calc(100% + 48px));opacity:0;visibility:hidden;transition:transform .9s var(--out),opacity .6s,visibility 0s .9s}
-.dock .card{padding:22px 20px 16px;box-shadow:0 40px 80px -40px rgba(60,42,28,.5)}
-.dock .card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--btn)}
-.dock .card-t{margin-top:8px;font-size:26px}
-html[lang=ar] .dock .card-t{font-size:19px}
-html[dir=rtl] .dock-x{right:auto;left:12px}
-.dock .f{margin-top:9px}
-.dock .field{height:44px;font-size:15px}
-.dock .tel select.field{flex-basis:100px;padding-left:10px;font-size:14px}
-.dock .go{margin-top:12px}
-.dock .btn{min-height:46px}
-.dock-x{position:absolute;z-index:2;top:12px;right:12px;display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);color:var(--ink-2)}
-.dock-x svg{width:10px;height:10px}
-.dock.is-on .stg>*{animation:up .8s var(--out) both;animation-delay:calc(var(--i,0)*70ms + 200ms)}
-.dock-tab{position:fixed;z-index:55;right:0;top:50%;padding:18px 12px;writing-mode:vertical-rl;transform:translate(100%,-50%) rotate(180deg);background:var(--btn);color:var(--cream);font:500 10.5px/1 var(--font);letter-spacing:.22em;text-transform:uppercase;transition:transform .7s var(--out)}
-html[lang=ar] .dock-tab{writing-mode:horizontal-tb;transform:translate(100%,-50%);padding:14px 16px;font:500 13px/1 var(--ar)}
-.dock-tab.is-on{transform:translate(0,-50%) rotate(180deg)}
-html[lang=ar] .dock-tab.is-on{transform:translate(0,-50%)}
-/* Arabic: the compact form and its tab sit on the left, mirroring the page */
-html[dir=rtl] .dock{right:auto;left:24px;transform:translateX(calc(-100% - 48px))}
-html[dir=rtl] .dock.is-on{transform:none}
-html[dir=rtl] .dock.is-on.is-min{transform:translateX(calc(-100% - 48px))}
-html[lang=ar] .dock-tab{right:auto;left:0;transform:translate(-100%,-50%)}
-html[lang=ar] .dock-tab.is-on{transform:translate(0,-50%)}
-@media (max-height:690px){.dock{top:auto;bottom:16px;translate:none}}
-@media (max-width:1279px){.dock,.dock-tab{display:none}}
 
 /* ---------- floating: call + enquire bar (phones & tablets) ---------- */
 :root{--barh:0px}
@@ -550,8 +540,8 @@ html[lang=ar] .mb-call{font:500 14px/1 var(--ar)}
 .modal.is-compact .xf{display:none}
 .lightbox .modal-box{background:var(--cream);padding:58px 16px calc(18px + env(safe-area-inset-bottom))}
 .lightbox img{width:100%;height:auto;max-height:72svh;object-fit:contain;margin:0 auto}
-.lightbox .lb-name{margin-top:12px;text-align:center;font:400 22px/1.2 var(--serif)}
-html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
+.lightbox .lb-name{margin-top:12px;text-align:center;font:300 19px/1.25 var(--font)}
+html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
 .lightbox .btn{display:flex;margin:14px auto 0;max-width:420px}
 @media (min-width:768px){
   .modal-box{left:50%;top:50%;right:auto;bottom:auto;width:min(460px,92vw);transform:translate(-50%,-46%);opacity:0;transition:transform .6s var(--out),opacity .45s}
@@ -600,6 +590,7 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
         <p class="sky-sub" data-i18n="hero.sub">Tilal City · Sharjah</p>
       </div></div></div>
       <div class="ly ly-bld" data-depth="20"><div class="lp"><div class="lc"><img src="assets/images/hero-building.webp" width="1080" height="1133" alt="Hawa The Residences: the courtyard façade above the retail promenade" decoding="async" fetchpriority="high"></div></div></div>
+      <div class="sky-fog"></div>
       <div class="ly ly-cl c-mid" data-depth="28" data-ratio="3.423" data-speed="14"><div class="lp"><div class="lc"><div class="cl-tr" style="background-image:url(assets/images/hero-cloud-b.webp)"></div></div></div></div>
       <div class="ly ly-cl c-front" data-depth="38" data-ratio="4.444" data-speed="24"><div class="lp"><div class="lc"><div class="cl-tr" style="background-image:url(assets/images/hero-cloud-a.webp)"></div></div></div></div>
       <div class="ly ly-cl c-front2" data-depth="52" data-ratio="2.644" data-speed="34"><div class="lp"><div class="lc"><div class="cl-tr" style="background-image:url(assets/images/hero-cloud-c.webp);background-position-x:-700px"></div></div></div></div>
@@ -811,9 +802,15 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
 <!-- ================= LOCATION ================= -->
 <section class="loc" id="location">
   <div class="wrap loc-grid">
-    <div class="map-box vk" id="mapBox">
-      <img src="assets/images/location-map.webp" width="1500" height="2142" loading="lazy" decoding="async" alt="Map: Hawa in Tilal City beside the E611, near Victoria International School, Sharjah Mosque and the Masaar track">
-      <span class="map-pin" aria-hidden="true"></span>
+    <div class="map-box" id="mapBox">
+      <iframe id="mapFrame" title="Map: District 11 Sales Office, Muwaileh Commercial, Sharjah" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <button class="map-shield" id="mapShield" type="button"><span data-i18n="mp.use">Tap to explore the map</span></button>
+      <div class="map-card">
+        <span class="k" data-i18n="mp.k">Sales office</span>
+        <b data-i18n="mp.name">District 11 Sales Office</b>
+        <span data-i18n="mp.addr">Sheikh Mohammed Bin Zayed Rd, Muwaileh Commercial, Sharjah</span>
+        <a class="btn btn-dark" data-map-link href="https://maps.app.goo.gl/EmRhSJgA6nsAXPw8A" target="_blank" rel="noopener"><span class="lbl" data-i18n="mp.go">Get directions</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M13 1l4 4-4 4"/></svg></a>
+      </div>
     </div>
     <div class="loc-copy">
       <span class="eyebrow rv" data-i18n="lc.eyebrow">Location</span>
@@ -836,7 +833,7 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
   <div class="wrap dev-row">
     <span class="amd rv" role="img" aria-label="Al Marwan Developments"><svg aria-hidden="true"><use href="#amd"/></svg></span>
     <p class="dev-q rv" data-i18n="dv.q">Intuitive living: a philosophy that puts human-centred needs, the environment and long-term value first.</p>
-    <div class="dev-i rv"><small data-i18n="dv.k1">Sales office</small><b data-i18n="dv.v1">Every day, 9 am to 7 pm</b></div>
+    <div class="dev-i rv"><small data-i18n="dv.k1">Sales office</small><b data-i18n="dv.v1">District 11, Muwaileh, Sharjah</b></div>
   </div>
 </section>
 
@@ -893,40 +890,14 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
   <div class="wrap">
     <div class="ftr-row">
       <a href="#top" class="logo" aria-label="Hawa The Residences"><svg aria-hidden="true"><use href="#hawa"/></svg></a>
-      <p data-i18n="ft.addr">Sales office: Al Marwan Developments, Tilal City, Emirates Road (E611), Sharjah · Every day, 9 am to 7 pm</p>
+      <p data-i18n="ft.addr">Sales office: District 11 Sales Office, Sheikh Mohammed Bin Zayed Rd, Muwaileh Commercial, Sharjah</p>
       <p class="ltr"><a data-tel href="tel:80061" data-tel-label>800 61</a> · <a data-mail href="mailto:info@almarwandevelopments.com" data-mail-label>info@almarwandevelopments.com</a></p>
     </div>
     <p class="disc"><span data-i18n="ft.disc">Images are artist's impressions. Floor plans, specifications and availability are indicative and subject to change; the sales and purchase agreement prevails.</span> © <span class="ltr">2026</span> <span data-i18n="ft.rights">Al Marwan Developments.</span></p>
   </div>
 </footer>
 
-<!-- ================= COMPACT FORM (desktop, right side) ================= -->
-<aside class="dock" id="dock" aria-label="Request a call back">
-  <div class="card" data-lead-box id="dockForm">
-    <button class="dock-x" id="dockMin" type="button" aria-label="Minimise"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 1l8 8M9 1L1 9"/></svg></button>
-    <div class="card-head stg">
-      <span class="card-k" style="--i:0" data-i18n="dk.k">Hawa The Residences</span>
-      <h3 class="card-t" style="--i:1" data-i18n="dk.title">Request a call back</h3>
-    </div>
-    <form class="lead-form stg" data-form="dock" method="post" novalidate>
-      <input class="hp" type="text" name="hawa_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="f" style="--i:2"><span data-i18n="f.name">Full name</span><input class="field" id="dock-name" name="name" type="text" maxlength="80" autocomplete="name" required data-i18n-ph="ph.name" placeholder="Your name"><em class="msg" data-i18n="e.name">Please enter your name</em></label>
-      <div class="f" style="--i:3"><span data-i18n="f.phone">Mobile number</span>
-        <div class="tel"><select class="field" id="dock-cc" name="cc" aria-label="Country code"></select><input class="field" id="dock-phone" name="phone" type="tel" maxlength="20" inputmode="tel" autocomplete="tel-national" required placeholder="50 123 4567" aria-label="Mobile number"></div>
-        <em class="msg" data-i18n="e.phone">Please enter a valid mobile number</em></div>
-      <button class="btn btn-dark btn-block go" style="--i:4" type="submit"><span class="lbl" data-i18n="dk.submit">Call me back</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M13 1l4 4-4 4"/></svg></button>
-      <p class="f-status" role="alert" data-i18n="f.error">We couldn't send your details. Please try again.</p>
-    </form>
-    <div class="thanks" aria-live="polite">
-      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="58" height="58" pathLength="1"/><path d="M20 33l8 8 16-17" pathLength="1"/></svg>
-      <h3 data-i18n="th.title">Thank you</h3>
-      <p data-i18n="th.text">A Hawa consultant will call you shortly.</p>
-    </div>
-  </div>
-</aside>
-<button class="dock-tab" id="dockTab" type="button"><span data-i18n="dk.tab">Enquire now</span></button>
-
-<!-- ================= CALL + ENQUIRE BAR (phones & tablets) ================= -->
+<!-- ================= CALL + ENQUIRE BAR (phones & tablets; buttons only, no form) ================= -->
 <div class="mbar" id="mbar">
   <a class="mb-call" data-tel href="tel:80061"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 3h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.9 6.9l1.5-2.3L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span data-i18n="hdr.call">Call</span></a>
   <button class="btn btn-dark" type="button" data-lead="price"><span class="lbl" data-i18n="hdr.cta">Enquire</span><svg class="arr" viewBox="0 0 18 10" fill="none" stroke="currentColor"><path d="M0 5h17M13 1l4 4-4 4"/></svg></button>
@@ -1012,6 +983,8 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     whatsapp: '',                 // digits only, e.g. '9715XXXXXXXX'. Empty hides WhatsApp buttons.
     email: 'info@almarwandevelopments.com',
     metrikaId: 0,                 // Yandex Metrika counter id, if one is added to <head> (goals: lead, contact_call, contact_whatsapp, contact_email)
+    mapLink: 'https://maps.app.goo.gl/EmRhSJgA6nsAXPw8A',                          // "Get directions": the sales office in Google Maps
+    mapQuery: 'District 11 Sales Office, Sheikh Mohammed Bin Zayed Rd, Muwaileh Commercial, Sharjah',   // what the embedded map shows; coordinates (e.g. '25.30,55.45') pin it exactly
     waMessage: {
       en: "Hello, I'm interested in Hawa The Residences in Tilal City. Please share the price list and floor plans.",
       ar: 'مرحباً، أنا مهتم بمشروع هواء ريزيدنس في مدينة تلال. يرجى مشاركة قائمة الأسعار والمخططات.'
@@ -1060,10 +1033,12 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     'l1': 'مسار', 'l1t': 'دقيقتان سيراً', 'l2': 'مدرسة فيكتوريا الدولية', 'l2t': '3 دقائق سيراً', 'l3': 'مسجد الشارقة', 'l3t': '5 دقائق',
     'l4': 'حدود دبي - الشارقة', 'l4t': '6 دقائق', 'l5': 'مطار الشارقة', 'l5t': '14 دقيقة', 'l6': 'مطار دبي', 'l6t': '25 دقيقة',
     'lc.cta': 'احجز زيارة لمعرض المبيعات',
-    'dv.q': 'العيش البديهي: فلسفة تضع احتياجات الإنسان والبيئة والقيمة طويلة الأمد في المقدمة.', 'dv.k1': 'مكتب المبيعات', 'dv.v1': 'يومياً، من 9 صباحاً حتى 7 مساءً',
+    'mp.use': 'اضغط لاستكشاف الخريطة', 'mp.k': 'مكتب المبيعات', 'mp.name': 'مكتب مبيعات ديستركت 11',
+    'mp.addr': 'شارع الشيخ محمد بن زايد، مويلح التجارية، الشارقة', 'mp.go': 'احصل على الاتجاهات',
+    'dv.q': 'العيش البديهي: فلسفة تضع احتياجات الإنسان والبيئة والقيمة طويلة الأمد في المقدمة.', 'dv.k1': 'مكتب المبيعات', 'dv.v1': 'ديستركت 11، مويلح، الشارقة',
     'fn.eyebrow': 'هواء ريزيدنس', 'fn.scr': 'ملاذك', 'fn.cap': 'بانتظارك', 'c.wa': 'واتساب',
     'dk.k': 'هواء ريزيدنس', 'dk.title': 'اطلب معاودة الاتصال', 'dk.submit': 'اتصلوا بي', 'dk.tab': 'استفسر الآن',
-    'ft.addr': 'مكتب المبيعات: المروان للتطوير العقاري، مدينة تلال، شارع الإمارات (E611)، الشارقة · يومياً من 9 صباحاً حتى 7 مساءً',
+    'ft.addr': 'مكتب المبيعات: مكتب مبيعات ديستركت 11، شارع الشيخ محمد بن زايد، مويلح التجارية، الشارقة',
     'ft.disc': 'الصور تصورات فنية. المخططات والمواصفات والتوافر استرشادية وقابلة للتغيير، وتسري اتفاقية البيع والشراء.',
     'ft.rights': 'المروان للتطوير العقاري.'
   };
@@ -1072,8 +1047,7 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     price: { en: ['Get the price list', 'Send me the price list'], ar: ['احصل على قائمة الأسعار', 'أرسلوا لي قائمة الأسعار'] },
     plans: { en: ['Floor plans: {u}', 'Send me the floor plans'], ar: ['مخططات {u}', 'أرسلوا لي المخططات'] },
     avail: { en: ['Availability: {u}', 'Check availability'], ar: ['توفّر {u}', 'تحقق من التوفر'] },
-    visit: { en: ['Book a private tour', 'Request a visit'], ar: ['احجز جولة خاصة', 'اطلب زيارة'] },
-    exit:  { en: ['Before you leave, drop us a message', 'Send'], ar: ['قبل أن تغادر، اترك لنا رسالة', 'أرسل'] }
+    visit: { en: ['Book a private tour', 'Request a visit'], ar: ['احجز جولة خاصة', 'اطلب زيارة'] }
   };
 
   /* residence types: plans come from the brochure (assets/images/plan-*.webp) */
@@ -1106,14 +1080,13 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
   var MOTION = root.classList.contains('motion') && !!window.gsap && !!window.ScrollTrigger;
   if (!MOTION) root.classList.remove('motion');
   var isDesk = function () { return window.innerWidth >= 1100; };
-  var isDock = function () { return window.innerWidth >= 1280; };
   var store = {
     get: function (k, s) { try { return (s ? sessionStorage : localStorage).getItem(k); } catch (e) { return null; } },
     set: function (k, v, s) { try { (s ? sessionStorage : localStorage).setItem(k, v); } catch (e) {} }
   };
   var lang = root.lang === 'ar' ? 'ar' : 'en', L = lang === 'ar' ? 1 : 0;
   var rtl = root.dir === 'rtl';
-  var state = { submitted: store.get('hawa-lead', true) === '1', dockHidden: false, skyVis: true, heroVis: false, finalVis: false, dockSeen: false };
+  var state = { submitted: store.get('hawa-lead', true) === '1', skyVis: true, heroVis: false, finalVis: false };
   var currentModal = 'price', currentUnit = 'studio', currentVar = 'A';
 
   /* ---------- language (switch reloads, so animations are built once per language) ---------- */
@@ -1166,9 +1139,21 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     }
   }
   document.addEventListener('click', function (e) {
-    var a = e.target.closest('[data-tel],[data-wa],[data-mail]');
-    if (a) track('contact_click', { method: a.hasAttribute('data-tel') ? 'call' : a.hasAttribute('data-wa') ? 'whatsapp' : 'email' });
+    var a = e.target.closest('[data-tel],[data-wa],[data-mail],[data-map-link]');
+    if (a) track('contact_click', { method: a.hasAttribute('data-tel') ? 'call' : a.hasAttribute('data-wa') ? 'whatsapp' : a.hasAttribute('data-mail') ? 'email' : 'directions' });
   });
+
+  /* ---------- sales office map: loads when near; the page keeps scrolling over it until someone taps to use it ---------- */
+  (function () {
+    var box = $('#mapBox'), frame = $('#mapFrame');
+    $$('[data-map-link]').forEach(function (a) { a.href = CONFIG.mapLink; });
+    new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting) return; o.disconnect();
+      frame.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(CONFIG.mapQuery) + '&z=15&hl=' + lang + '&output=embed';
+    }, { rootMargin: '600px 0px' }).observe(box);
+    $('#mapShield').addEventListener('click', function () { box.classList.add('is-live'); track('map_open'); });
+    new IntersectionObserver(function (es) { if (!es[0].isIntersecting) box.classList.remove('is-live'); }).observe(box);
+  })();
 
   /* ---------- forms ---------- */
   var SYNC = ['name', 'phone', 'email', 'cc', 'buyer_type', 'unit'];
@@ -1189,13 +1174,10 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     if (first) first.focus();
     return ok;
   }
-  function markDone(source) {
+  function markDone() {
     state.submitted = true;
     store.set('hawa-lead', '1', true);
     $$('[data-lead-box]').forEach(function (b) { b.classList.add('is-done'); });
-    if (source === 'dock') setTimeout(function () { state.dockHidden = true; updateFloating(); }, 5000);
-    else state.dockHidden = true;
-    updateFloating();
   }
   $$('form.lead-form').forEach(function (f) {
     f.addEventListener('submit', function (e) {
@@ -1234,7 +1216,7 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
         .then(function () { btn.classList.remove('is-loading'); btn.disabled = false; });
     });
   });
-  if (state.submitted) { $$('[data-lead-box]').forEach(function (b) { b.classList.add('is-done'); }); state.dockHidden = true; }
+  if (state.submitted) $$('[data-lead-box]').forEach(function (b) { b.classList.add('is-done'); });
 
   /* ---------- smooth scroll ---------- */
   var lenis = null;
@@ -1296,14 +1278,7 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     if (planBox.open) closeDialog(planBox, function () { openLead(ctx, compact); });
     else openLead(ctx, compact);
   });
-  /* computers only: one gentle pop-up per visit when the cursor leaves the window.
-     Never after a lead, never over another dialog, never while someone is typing in a form. Nothing opens on its own while scrolling. */
-  var popTimer = 0, t0 = Date.now();
-  function canPop() { var a = document.activeElement; return !state.submitted && !modal.open && !planBox.open && !store.get('hawa-pop', true) && !(a && a.closest && a.closest('form')); }
-  document.addEventListener('mouseout', function (e) {
-    if (e.relatedTarget || e.clientY > 8 || !isDesk() || Date.now() - t0 < 15000 || popTimer || !canPop()) return;
-    popTimer = setTimeout(function () { popTimer = 0; if (!canPop()) return; store.set('hawa-pop', '1', true); openLead('exit'); }, 0);
-  });
+  /* the form dialog opens only when a visitor presses a button: nothing pops up on its own */
 
   /* ---------- residences: types, layouts and plans ---------- */
   var tabs = $('#tabs'), varsEl = $('#vars'), roomsEl = $('#rooms'), planImg = $('#planImg'), planSheet = $('#planSheet'), planPhoto = $('#planPhoto'), planBig = $('#planBig');
@@ -1356,21 +1331,13 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
     Object.keys(UNITS).forEach(function (k) { Object.keys(UNITS[k].vars).forEach(function (v) { new Image().src = 'assets/images/' + UNITS[k].vars[v][0] + '.webp'; }); });
   }, { rootMargin: '400px 0px' }).observe(planSheet);
 
-  /* ---------- floating forms ---------- */
-  var dock = $('#dock'), dockTab = $('#dockTab'), mbar = $('#mbar'), hdr = $('#hdr');
-  var dockMin = store.get('hawa-dock-min', true) === '1';
+  /* ---------- phones and tablets: a Call + Enquire bar once the visitor is past the sky (hidden over the forms) ---------- */
+  var mbar = $('#mbar'), hdr = $('#hdr');
   function updateFloating() {
     var anyOpen = modal.open || planBox.open;
-    var free = !state.skyVis && !state.heroVis && !state.finalVis && !anyOpen;
-    var showDock = isDock() && free && !state.dockHidden;
-    dock.classList.toggle('is-on', showDock);
-    dock.classList.toggle('is-min', dockMin);
-    dockTab.classList.toggle('is-on', showDock && dockMin);
-    if (showDock && !dockMin && !state.dockSeen) { state.dockSeen = true; track('dock_shown'); }
-    mbar.classList.toggle('is-on', !isDock() && free);
+    mbar.classList.toggle('is-on', window.innerWidth < 1280 && !state.skyVis && !state.heroVis && !state.finalVis && !anyOpen);
   }
-  $('#dockMin').addEventListener('click', function () { dockMin = true; store.set('hawa-dock-min', '1', true); updateFloating(); });
-  dockTab.addEventListener('click', function () { dockMin = false; store.set('hawa-dock-min', '0', true); updateFloating(); setTimeout(function () { var n = $('#dock-name'); if (n) n.focus({ preventScroll: true }); }, 500); });
+  window.addEventListener('resize', updateFloating);
   var fio = new IntersectionObserver(function (es) {
     es.forEach(function (e) {
       if (e.target.id === 'top') state.skyVis = e.isIntersecting;
@@ -1506,7 +1473,8 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
       .to('.c-front', { scale: 2.5, duration: 5 }, 0)
       .to('.c-front2', { scale: 3.4, yPercent: -8, duration: 5 }, 0)
       .to('#skyHaze', { opacity: 1, duration: 2.6 }, 2.5)
-      .to('.c-veil', { opacity: 1, duration: 1.8 }, 3.8)
+      .to('.c-veil.bot', { opacity: 1, duration: 1.8 }, 3.8)
+      .to('.c-veil.top', { opacity: .62, duration: 1.8 }, 3.8)
       .fromTo('.c-veil.bot', { y: vh(8) }, { y: vh(-3), duration: 6.2 }, 3.8)
       .fromTo('.c-veil.top', { y: vh(-8) }, { y: vh(3), duration: 6.2 }, 3.8)
       .to('#skyEnd', { y: vh(-4), duration: 2 }, 8);
@@ -1663,20 +1631,22 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
   gsap.from('.plan-wrap', { y: 80, opacity: 0, rotationX: 18, transformPerspective: 1400, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.res-grid', start: 'top 80%' } });
   gsap.from('.plan-photo', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.5, delay: .3, ease: 'expo.inOut', scrollTrigger: { trigger: '.res-grid', start: 'top 70%' } });
 
-  /* images lean with the speed of the scroll, then settle */
-  (function () {
+  /* computers: images lean with the speed of the smooth scroll, then settle (left out on phones, where it would jitter) */
+  mm.add('(pointer: fine)', function () {
     var els = $$('.vk').map(function (el) { return gsap.quickTo(el, 'skewY', { duration: .6, ease: 'power3' }); });
     var last = 0;
-    ScrollTrigger.create({ start: 0, end: 'max', onUpdate: function (st) {
-      var v = clamp(st.getVelocity() / -320, -3.2, 3.2);
+    var st = ScrollTrigger.create({ start: 0, end: 'max', onUpdate: function (s) {
+      var v = clamp(s.getVelocity() / -320, -3.2, 3.2);
       if (Math.abs(v - last) < .05) return; last = v;
       els.forEach(function (q) { q(v); });
     } });
-    gsap.ticker.add(function () { if (Math.abs(last) > .01) { last *= .9; if (Math.abs(last) < .05) last = 0; els.forEach(function (q) { q(last); }); } });
-  })();
+    var tick = function () { if (Math.abs(last) > .01) { last *= .9; if (Math.abs(last) < .05) last = 0; els.forEach(function (q) { q(last); }); } };
+    gsap.ticker.add(tick);
+    return function () { st.kill(); gsap.ticker.remove(tick); gsap.set('.vk', { skewY: 0 }); };
+  });
 
-  /* location: the map settles in as you arrive */
-  gsap.fromTo('#mapBox img', { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '#mapBox', start: 'top bottom', end: 'center center', scrub: true } });
+  /* location: the map frame opens as you arrive */
+  gsap.from('#mapBox', { clipPath: 'inset(14% 10% 14% 10%)', ease: 'none', scrollTrigger: { trigger: '#mapBox', start: 'top bottom', end: 'center 60%', scrub: true } });
   gsap.from('.prox li', { x: rtl ? -30 : 30, opacity: 0, duration: .9, stagger: .08, ease: 'expo.out', scrollTrigger: { trigger: '.prox', start: 'top 85%' } });
 
   /* amenities and the plan: tilt toward the pointer */
@@ -1699,7 +1669,7 @@ html[lang=ar] .lightbox .lb-name{font:500 18px/1.5 var(--ar-serif)}
 
   /* magnetic buttons */
   mm.add('(pointer: fine)', function () {
-    var btns = $$('.btn-dark,.btn-glass').filter(function (b) { return !b.closest('.dock,.modal,.mbar,.hdr,form,.sky'); });
+    var btns = $$('.btn-dark,.btn-glass').filter(function (b) { return !b.closest('.modal,.mbar,.hdr,form,.sky'); });
     var off = btns.map(function (b) {
       var xTo = gsap.quickTo(b, 'x', { duration: .5, ease: 'power3' }), yTo = gsap.quickTo(b, 'y', { duration: .5, ease: 'power3' });
       var m = function (e) { var r = b.getBoundingClientRect(); xTo((e.clientX - r.left - r.width / 2) * .18); yTo((e.clientY - r.top - r.height / 2) * .3); };
