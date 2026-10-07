@@ -78,7 +78,9 @@ The fields match the District 11 page, plus `unit` and `plan_viewed`, so the sam
 A `generate_lead` event is pushed to `dataLayer` (GTM) and fired to gtag, Meta Pixel, Snap and TikTok if they are installed.
 
 ### Thank-you page and conversion tracking
-Every form sends the visitor to `thank-you.html` once the lead is sent (the Metrika goal `lead` is reported first). The thank-you page
+All three forms (the offer form, the pop-up and the form at the bottom) send the visitor to `thank-you.html` every time a lead is sent
+(the Metrika goal `lead` is reported first). The forms are always ready: coming back from the thank-you page, any open pop-up is closed and
+the fields are empty. On phones the pop-up follows the part of the screen the keyboard leaves free, so it stays still while typing. The thank-you page
 carries the same Metrika counter, so a goal of type *Page visit* with the address containing `thank-you.html` counts conversions too, and
 it is the page to put other ad pixels on later. While `formEndpoint` is empty the redirect still happens, so the flow can be tried, but
 the lead itself is not saved.
