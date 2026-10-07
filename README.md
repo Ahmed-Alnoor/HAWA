@@ -6,12 +6,13 @@ Tilal City, Sharjah: studio, 1 & 2 bedroom apartments from AED 592,000, 5% down 
 handover Q4 2028. Built on the same structure as the District 11 landing page. Motion runs on GSAP + ScrollTrigger and Lenis
 smooth scrolling, inlined in the file (GSAP Standard License, Lenis MIT).
 
-Open `index.html` directly, or host it together with the `assets/` folder. Those two are all a web host needs: `README.md` and `source/` stay in the repository. Arabic: add `?lang=ar` to the URL, or use the toggle.
+Open `index.html` directly, or host it together with `thank-you.html` and the `assets/` folder. Those are all a web host needs: `README.md` and `source/` stay in the repository. Arabic: add `?lang=ar` to the URL, or use the toggle.
 
 ## Folder
 | Path | What it is |
 | --- | --- |
 | `index.html` | The whole page (HTML + CSS + JS inline, no frameworks). |
+| `thank-you.html` | The page a visitor sees after sending a form, in their language. After 6 seconds, or at once with **Back to the page**, it returns them to the page they came from, where they left it. It only ever sends visitors back to this site, and search engines are told not to list it. |
 | `assets/images/` | Every image the page uses, as WebP (nothing unused is kept). |
 | `assets/fonts/` | Radikal UltraThin, Light and Medium (Latin letters only) and Noto Kufi Arabic (Arabic letters only, weights 200–500), as WOFF2: only the weights and letters the page uses. The page loads no fonts from outside. |
 | `source/` | The original material, not loaded by the page: `brochure/` (EN and AR PDFs), `fonts/` (Radikal OTF, Noto Kufi TTF), `hero-layers/` (sky, cloud and building layers), `logos/` (Hawa logos in English and Arabic, and the Arabic Al Marwan logo), `renders/` (all project renders, named by what they show). |
@@ -62,6 +63,7 @@ Edit the `CONFIG` block near the top of the `<script>` in `index.html`:
 | `phone` / `phoneDisplay` | Click-to-call number and how it is shown (800 61). |
 | `whatsapp` | WhatsApp number, digits only (e.g. `9715XXXXXXXX`). WhatsApp buttons stay hidden until this is set. |
 | `email` | Contact email (marketing@almarwandevelopments.com). |
+| `thankYouPage` | Where a visitor goes after sending a form: `thank-you.html`. Set it to `''` to show the thank-you message inside the form instead. |
 | `metrikaId` | Yandex Metrika counter `113514133`. Its tag is in `<head>`. Leads reach the goal `lead`; Call, WhatsApp and email clicks reach `contact_call`, `contact_whatsapp` and `contact_email`. |
 | `mapLink` | Where **Get directions** goes: the District 11 Sales Office in Google Maps. |
 | `mapQuery` | What the footer map shows: `District 11 Sales Office, Sheikh Mohammed Bin Zayed Rd, Muwaileh Commercial, Sharjah`. Put coordinates here instead (e.g. `25.30,55.45`, copied from Google Maps) to pin the exact spot. |
@@ -74,3 +76,9 @@ Each lead is posted as form fields: `project`, `name`, `phone` (one internationa
 and any UTM / gclid / fbclid values. The hidden `hawa_hp` field is a bot trap and should be ignored if filled.
 The fields match the District 11 page, plus `unit` and `plan_viewed`, so the same Google Apps Script can be used with those two columns added.
 A `generate_lead` event is pushed to `dataLayer` (GTM) and fired to gtag, Meta Pixel, Snap and TikTok if they are installed.
+
+### Thank-you page and conversion tracking
+Every form sends the visitor to `thank-you.html` once the lead is sent (the Metrika goal `lead` is reported first). The thank-you page
+carries the same Metrika counter, so a goal of type *Page visit* with the address containing `thank-you.html` counts conversions too, and
+it is the page to put other ad pixels on later. While `formEndpoint` is empty the redirect still happens, so the flow can be tried, but
+the lead itself is not saved.
