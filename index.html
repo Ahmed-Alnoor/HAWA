@@ -485,6 +485,8 @@ html[lang=ar] .am-i h3{font:500 14.5px/1.55 var(--ar)}
 .dev-row{display:grid;gap:26px;align-items:center}
 .amd{display:block;color:var(--brown);width:210px}
 .amd svg{width:100%;height:auto;aspect-ratio:1860/392}
+.amd-ar{width:190px}
+.amd-ar svg{aspect-ratio:2072/497;overflow:visible}
 .dev-q{font:300 clamp(1.1rem,.9vw + .85rem,1.55rem)/1.5 var(--font);color:var(--ink);max-width:42ch}
 html[lang=ar] .dev-q{font:400 clamp(1.05rem,.9vw + .75rem,1.4rem)/1.85 var(--ar)}
 .dev-i small{display:block;font:500 9.5px/1.4 var(--font);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2)}
@@ -715,7 +717,6 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
       <div class="drum" id="drum">
         <figure class="cy-card" data-title="Sunset swims" data-i18n-title="lf.1"><img src="assets/images/pool-sunset.webp" width="1340" height="2400" loading="lazy" decoding="async" alt="Residents swimming in the courtyard pool at sunset"></figure>
         <figure class="cy-card" data-title="Evenings with friends" data-i18n-title="lf.2"><img src="assets/images/lounge-gathering.webp" width="941" height="1672" loading="lazy" decoding="async" alt="Friends sharing drinks in a warm living room"></figure>
-        <figure class="cy-card" data-title="Morning laps" data-i18n-title="lf.3"><img src="assets/images/pool-lane.webp" width="941" height="1672" loading="lazy" decoding="async" alt="Sunlight on the water of a lap pool"></figure>
         <figure class="cy-card" data-title="Dinner at home" data-i18n-title="lf.4"><img src="assets/images/dining.webp" width="941" height="1672" loading="lazy" decoding="async" alt="A dining table set under a linear pendant light"></figure>
         <figure class="cy-card" data-title="Shaded loungers" data-i18n-title="lf.5"><img src="assets/images/pool-cabana.webp" width="1340" height="2400" loading="lazy" decoding="async" alt="Sun loungers under a parasol by the pool"></figure>
         <figure class="cy-card" data-title="Wake up to the view" data-i18n-title="lf.6"><img src="assets/images/bedroom-view.webp" width="941" height="1672" loading="lazy" decoding="async" alt="A bedroom with sheer curtains open to a green view"></figure>
@@ -834,7 +835,7 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
 <section class="loc" id="location">
   <div class="wrap loc-grid">
     <div class="map-box vk" id="mapBox">
-      <img src="assets/images/location-map.webp" width="1400" height="1400" loading="lazy" decoding="async" alt="Map: Hawa beside the E61, near Victoria International Schools of Sharjah, Sharjah Mosque, El Badi Palace and the Hayyan project">
+      <img src="assets/images/location-map.webp" data-src-ar="assets/images/location-map-ar.webp" data-i18n-alt="lc.map" width="1400" height="1400" loading="lazy" decoding="async" alt="Map: Hawa beside the E61, near Victoria International Schools of Sharjah, Sharjah Mosque, El Badi Palace and the Hayyan project">
       <span class="map-pin" aria-hidden="true"></span>
     </div>
     <div class="loc-copy">
@@ -856,7 +857,8 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
 <!-- ================= DEVELOPER ================= -->
 <section class="dev" id="developer">
   <div class="wrap dev-row">
-    <span class="amd rv" role="img" aria-label="Al Marwan Developments"><svg aria-hidden="true"><use href="#amd"/></svg></span>
+    <span class="amd rv" data-lang="en" role="img" aria-label="Al Marwan Developments"><svg aria-hidden="true"><use href="#amd"/></svg></span>
+    <span class="amd amd-ar" data-lang="ar" role="img" aria-label="المروان للتطوير"><svg viewBox="0 0 2072 497" aria-hidden="true" fill="currentColor" fill-rule="evenodd"><defs><clipPath id="amk"><rect x="0" y="0" width="2072" height="497"/></clipPath></defs><g><path class="am-l" d="M2018 130.5L2018 0L2045 0L2072 0L2072 130.5L2072 261L2045 261L2018 261L2018 130.5Z"/></g><g clip-path="url(#amk)"><path class="am-l am-k" d="M588.7 344C586.7 343.6 584.7 343 584.3 342.7C584 342.3 585.2 331.2 587.1 318.1L590.4 294.1L600.5 294.1C619.9 294.2 633.1 286.4 639.2 271.1L641.5 265.5L641.8 174.2L642 83L669 83L696 83L696 148L696 213L1164.1 213L1632.2 213L1631.7 211.7C1626.3 197.6 1623.3 179.5 1624.5 167.5C1628.7 123.1 1655.5 92.4 1697 84.6L1705.2 83L1758.1 83L1811 83L1811 137L1811 190.9L1813 196.3C1815.4 202.6 1819.7 207.1 1826.5 210.2L1831.5 212.5L1869.2 212.8L1907 213.1L1907 106.6L1907 0L1934.5 0L1962 0L1962 130.6L1962 261.1L1890.8 260.8L1819.5 260.4L1811.6 258.2C1807.3 257 1800.6 254.5 1796.7 252.6L1789.7 249.2L1783.6 252.8C1769.6 261 1754.8 265.3 1734 267C1717.6 268.4 1706.5 267.6 1694.5 264.2L1685.5 261.6L1190.9 261.3L696.3 261L695.6 267.9C691.4 313.1 653 345.4 603.8 344.9C597.6 344.8 590.8 344.4 588.7 344ZM1738.5 217.5C1748.1 215.5 1760.6 209.2 1760.3 206.5C1760.2 205.4 1759.6 201.2 1759 197.2C1758.5 193.2 1758 176.4 1758 159.8L1758 129.8L1733.8 130.2L1709.5 130.6L1703.6 132.9C1696.7 135.7 1686.7 145.1 1683.3 152C1670.3 178.8 1681.4 211 1705.9 217.6C1712.3 219.3 1730.1 219.3 1738.5 217.5Z"/></g><g><path class="am-l" d="M442 345.5C441.2 345.3 436 344.6 430.4 344C424.9 343.3 419.8 342.5 419.2 342.1C418.2 341.5 423.3 293.4 424.6 292.1C424.8 291.9 428.2 292.3 432.2 293C444.3 295.1 469.2 295.5 479.3 293.7C497.8 290.5 509.8 281.1 512.5 268C512.8 266.1 513.4 263.8 513.6 262.9L514.1 261.2L487.8 260.8L461.5 260.3L451.6 257.7C415.6 248.1 391.2 222.4 385.1 187.6C383.5 178.9 383.8 160.4 385.6 151C392.6 114 420.8 89.4 462.1 84C466.2 83.5 491.7 83 518.8 83L568.1 83L567.8 177.7L567.5 272.5L565.2 280.4C554.1 318.6 527.8 339.5 484 344.9C476.5 345.9 446 346.3 442 345.5ZM514 172L514 130L499.2 130C470.5 130.1 460.1 132.4 450.5 141.1C431.8 158.2 435.2 192.6 457 206.4C465.9 212.1 474.6 213.7 498.8 213.9L514 214L514 172Z"/></g><g><path class="am-l" d="M284 130.5L284 0L311 0L338 0L338 130.5L338 261L311 261L284 261L284 130.5Z"/></g><g><path class="am-l am-dot" d="M92 60.5L73.5 42L92.3 23.2L111 4.5L129.7 23.2L148.5 42L130 60.5C119.8 70.7 111.3 79 111 79C110.7 79 102.2 70.7 92 60.5Z"/></g><g><path class="am-l" d="M101.5 309.9C51.3 305.7 15 278.6 2.7 236.5L0.6 229.5L0.3 179.8L-0.1 130L26.9 130L53.9 130L54.2 174.8L54.6 219.5L56.8 225.4C63.1 242.2 75.3 253 94.5 258.6L100.5 260.4L140.2 260.7L180 261.1L180 172.1L180 83L207 83L234 83L234 197L234 311L172.2 310.9C138.3 310.8 106.5 310.4 101.5 309.9Z"/></g><g><path class="am-s" d="M904.7 493.2L901 489.4L904.8 485.7L908.6 482L912.5 486L916.4 490L913 493.5C911.1 495.4 909.3 497 909 497C908.7 497 906.7 495.3 904.7 493.2ZM920 493.5L916.6 490L920.6 486L924.6 482L928.5 486L932.4 490L929 493.5C924.8 497.8 924.2 497.8 920 493.5ZM763 489.7C763 484.5 763.9 483 766.9 483C770.5 483 775.6 479.7 778 475.8L780 472.5L780 445.2L780 418L786 418L792 418L792 438L792 458L855.5 458L919 458L919 438L919 418L924.5 418L930 418L930 442.5L930 467L861.1 467L792.2 467L791.6 468.6C791.3 469.5 791 471.3 791 472.6C791 482.4 780.8 491.7 768.8 492.7L763 493.3L763 489.7ZM961.4 490.8C961.7 489.5 962 487.3 962 485.8L962 483L970 483C982.9 483 988.9 479.4 990.5 470.7L991.2 467L981.8 467C960.8 467 950.8 458.8 950.6 441.6C950.5 423.3 959.9 417 987.2 417L1002 417L1002 437.5L1002 458L1057 458L1112 458L1112 425L1112 392L1117.5 392L1123 392L1123 404.4L1123 416.8L1146.2 417.2L1169.5 417.6L1174.5 419.6C1177.3 420.7 1181.7 423.7 1184.6 426.5C1190.9 432.6 1193 438.5 1193 450.3L1193 458.3L1202.3 457.7C1207.4 457.4 1213.1 456.6 1214.9 455.8L1218.3 454.5L1218.1 435.7L1217.9 417L1223.4 417L1229 417L1229 433.9L1229 450.7L1231 453.3C1233.8 456.8 1238.6 458 1250.2 458L1260 458L1260 425L1260 392L1265.5 392L1271 392L1271 425L1271 458L1284.5 458L1298 458L1298 425L1298 392L1303.5 392L1309 392L1309 429.5L1309 467L1271.2 467L1233.5 467L1229.3 465L1225 463.1L1221.3 464.8L1217.5 466.5L1109.8 466.8L1002 467.1L1002 469.4C1002 475 999 481.8 994.6 485.8C988.9 491.1 982.4 493 970.2 493L960.8 493L961.4 490.8ZM991 442L991 426L982.8 426C968.6 426.1 962 430.9 962 441.3C962 452.6 968.6 457.8 983.2 457.9L991 458L991 442ZM1181.8 452.7C1182.6 440.2 1177.4 430.6 1168.5 428.1C1166.2 427.5 1155.8 427 1143.8 427L1123 427L1123 441.8C1123 450 1123.3 457 1123.7 457.3C1124.1 457.7 1137.2 457.9 1152.9 457.8L1181.5 457.5L1181.8 452.7ZM1211 400.5L1207.6 397L1211.5 393L1215.4 389L1219.2 392.7L1223 396.4L1227 392.5L1231 388.6L1235 392.5L1239 396.4L1235 400.4L1231 404.4L1227.2 400.7L1223.4 397L1220 400.5C1215.8 404.8 1215.2 404.8 1211 400.5Z"/></g></svg></span>
     <p class="dev-q rv" data-i18n="dv.q">Intuitive living: a philosophy that puts human-centred needs, the environment and long-term value first.</p>
     <div class="dev-i rv"><small data-i18n="dv.k1">Building the UAE since</small><b class="ltr">1978</b></div>
   </div>
@@ -1049,17 +1051,17 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
     'mi.1': 'شقة', 'mi.2': 'طوابق', 'mi.3': 'مساحة الأرض', 'mi.4': 'موقف سيارات', 'mi.sqft': 'قدم²',
     'st.eyebrow': 'تصميم مدروس', 'st.scr': 'إنجاز', 'st.cap': 'معماري',
     's1.n': '01 · الوصول', 's1.t': 'أربعة طوابق و268 شقة.', 's1.p': 'مزيج متناغم من شقق الاستديو والغرفة والصالة والغرفتين والصالة، صُمّمت بعناية في أدق التفاصيل.',
-    's2.n': '02 · الأفنية', 's2.t': 'أفنية يتوسّطها مسبح كبير.', 's2.p': 'مساحات للسباحة واللعب والاسترخاء مع العائلة والأصدقاء، على بُعد خطوات من منزلك.',
+    's2.n': '02 · المساحات', 's2.t': 'مساحات يتوسّطها مسبح كبير.', 's2.p': 'للسباحة واللعب والاسترخاء مع العائلة والأصدقاء، على بُعد خطوات من منزلك.',
     's3.n': '03 · المعيشة', 's3.t': 'مساحات رحبة وتشطيبات عالية الجودة.', 's3.p': 'كل تفصيل فيها يعكس التزامنا بالتصميم المتميّز والابتكار.',
     's4.n': '04 · الراحة', 's4.t': 'غرف نوم يغمرها الضوء الطبيعي.', 's4.p': 'نوافذ كبيرة تُدخل النور وتفتح الإطلالة.',
     's5.n': '05 · الإطلالات', 's5.t': 'شرفات لساعات الغروب.', 's5.p': 'تتميّز بعض التصاميم بشرفة خاصة تستمتع فيها بنسيم المساء، فـ«هواء» اسمٌ على مسمّى.',
     'lf.eyebrow': 'لحظات من الحياة اليومية', 'lf.scr': 'أسلوب الحياة في', 'lf.cap': 'هواء',
-    'lf.1': 'سباحة عند الغروب', 'lf.2': 'أمسيات مع الأصدقاء', 'lf.3': 'سباحة الصباح', 'lf.4': 'عشاء في المنزل',
+    'lf.1': 'سباحة عند الغروب', 'lf.2': 'أمسيات مع الأصدقاء', 'lf.4': 'عشاء في المنزل',
     'lf.5': 'استرخاء تحت المظلّات', 'lf.6': 'صباح بإطلالة', 'lf.7': 'جولة صباحية على مسار', 'lf.8': 'زوايا هادئة',
-    'sn1.n': 'الأفنية', 'sn1.t': 'ثلاثة أفنية، مساحة كلٍّ منها <em>35 × 35 متراً.</em>', 'sn1.cta': 'احجز جولة خاصة',
+    'sn1.n': 'المساحات', 'sn1.t': 'ثلاث مساحات، أبعاد كلٍّ منها <em>35 × 35 متراً.</em>', 'sn1.cta': 'احجز جولة خاصة',
     'f1.eyebrow': 'المساحات المشتركة', 'f1.title': 'مساحات مشتركة <em>بمفهوم جديد.</em>',
-    'f1.lead': 'ثلاثة أفنية واسعة، مساحة كلٍّ منها 35 × 35 متراً، تضم مسبحاً كبيراً ومنطقة ألعاب للأطفال ومساحات للاسترخاء والالتقاء بالعائلة والأصدقاء.',
-    't0': 'ثلاثة أفنية', 't1': 'مسبح كبير', 't3': 'منطقة ألعاب للأطفال', 't4': 'مناطق للاسترخاء', 'f1.tag': '35 × 35 م',
+    'f1.lead': 'ثلاث مساحات واسعة، أبعاد كلٍّ منها 35 × 35 متراً، تضم مسبحاً كبيراً ومنطقة ألعاب للأطفال وأماكن للاسترخاء والالتقاء بالعائلة والأصدقاء.',
+    't0': 'ثلاث مساحات', 't1': 'مسبح كبير', 't3': 'منطقة ألعاب للأطفال', 't4': 'مناطق للاسترخاء', 'f1.tag': '35 × 35 م',
     'f2.eyebrow': 'تجربة تسوّق متجدّدة', 'f2.title': 'مقاهٍ ومطاعم ومتاجر <em>على بُعد خطوات.</em>',
     'f2.lead': 'ممشى تجاري يضم مقاهي أنيقة ومطاعم راقية ومتاجر مميّزة، لفنجان قهوة على مهل أو وجبة شهية أو تجربة تسوّق فريدة، ويلبّي احتياجاتك اليومية.',
     't5': 'مقاهٍ أنيقة', 't6': 'مطاعم راقية', 't7': 'متاجر مميّزة', 't8': 'الاحتياجات اليومية', 'f2.tag': 'الممشى التجاري',
@@ -1072,9 +1074,10 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
     'l1': 'مسار', 'l1t': 'دقيقتان سيراً', 'l2': 'مدرسة فيكتوريا الدولية بالشارقة', 'l2t': '3 دقائق سيراً', 'l3': 'مسجد الشارقة', 'l3t': '5 دقائق',
     'l4': 'الحدود بين دبي والشارقة', 'l4t': '6 دقائق', 'l5': 'مطار الشارقة الدولي', 'l5t': '14 دقيقة', 'l6': 'مطار دبي الدولي', 'l6t': '25 دقيقة',
     'lc.cta': 'احجز زيارة لمكتب المبيعات',
+    'lc.map': 'خريطة: مساكن هواء بجوار شارع E61، بالقرب من مدرسة فيكتوريا الدولية بالشارقة وجامع الشارقة وقصر البديع ومشروع حيّان',
     'mp.use': 'اضغط لاستكشاف الخريطة', 'mp.k': 'مكتب المبيعات', 'mp.name': 'مكتب مبيعات ديستركت 11',
     'mp.addr': 'شارع الشيخ محمد بن زايد، مويلح التجارية، الشارقة', 'mp.go': 'احصل على الاتجاهات',
-    'dv.q': 'العيش البديهي فلسفتنا: حلول تضع احتياجات الإنسان والبيئة والقيمة طويلة الأمد في المقام الأول.', 'dv.k1': 'نبني في الإمارات منذ',
+    'dv.q': 'حياة تنبض بالانسجام. فلسفة تضع الإنسان، والبيئة، والقيمة المستدامة في صميم الأولويات.', 'dv.k1': 'نبني في الإمارات منذ',
     'fn.eyebrow': 'مساكن هواء', 'fn.scr': 'ملاذك', 'fn.cap': 'بانتظارك', 'c.wa': 'واتساب',
     'ft.disc': 'الصور تعبيرية. المخططات والمواصفات والأسعار وشروط الدفع والتوافر استرشادية وقابلة للتغيير، وتسري بنود اتفاقية البيع والشراء.',
     'ft.rights': 'المروان للتطوير العقاري.'
@@ -1096,10 +1099,10 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
   };
   var UNITS = {
     studio: { name: ['Studio', 'استديو'], unit: 'Studio', photo: 'bedroom.webp',
-      text: ['An open bedroom and living space with a kitchen and a bathroom. Layout B adds a balcony.', 'مساحة مفتوحة للنوم والمعيشة مع مطبخ وحمّام، ويضيف التصميم B شرفة.'],
+      text: ['An open bedroom and living space with a kitchen and a bathroom. Layout B adds a balcony.', 'مساحة مفتوحة للنوم والمعيشة مع مطبخ وحمّام، ويضيف التصميم ب شرفة.'],
       vars: { A: ['plan-studio-a', 484, 936, ['bl', 'kit', 'bath']], B: ['plan-studio-b', 466, 934, ['bl', 'kit', 'bath', 'balc']] } },
     '1br': { name: ['One Bedroom', 'غرفة وصالة'], unit: '1 Bedroom', photo: 'living-room.webp',
-      text: ['A separate bedroom, open dining and living, a bathroom and a powder room. Layout B adds a balcony.', 'غرفة نوم مستقلة وصالة للطعام والمعيشة وحمّام وحمّام للضيوف، ويضيف التصميم B شرفة.'],
+      text: ['A separate bedroom, open dining and living, a bathroom and a powder room. Layout B adds a balcony.', 'غرفة نوم مستقلة وصالة للطعام والمعيشة وحمّام وحمّام للضيوف، ويضيف التصميم ب شرفة.'],
       vars: { A: ['plan-1br-a', 804, 888, ['bed', 'dl', 'bath', 'pwd']], B: ['plan-1br-b', 787, 972, ['bed', 'dl', 'bath', 'pwd', 'balc']] } },
     '2br': { name: ['Two Bedroom', 'غرفتين وصالة'], unit: '2 Bedroom', photo: 'lounge-gathering.webp',
       text: ['A master bedroom, a second bedroom, open dining and living, two bathrooms, and a balcony or terrace.', 'غرفة نوم رئيسية وغرفة نوم ثانية وصالة للطعام والمعيشة وحمّامان، مع شرفة أو تراس.'],
@@ -1128,6 +1131,8 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
   if (lang === 'ar') {
     $$('[data-i18n]').forEach(function (n) { var v = AR[n.dataset.i18n]; if (v != null) n.innerHTML = v; });
     $$('[data-i18n-ph]').forEach(function (n) { var v = AR[n.dataset.i18nPh]; if (v) n.placeholder = v; });
+    $$('[data-i18n-alt]').forEach(function (n) { var v = AR[n.dataset.i18nAlt]; if (v) n.alt = v; });
+    $$('img[data-src-ar]').forEach(function (n) { n.src = n.dataset.srcAr; });
     document.title = AR._title;
     $$('use[href="#hawa"]').forEach(function (u) { u.setAttribute('href', '#hawa-ar'); });
     $$('.logo').forEach(function (a) { a.setAttribute('aria-label', 'مساكن هواء'); });
@@ -1141,7 +1146,7 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
     location.href = u.toString();
   });
 
-  $$('.sky-logo').forEach(function (l) { if (l.dataset.lang !== lang) l.remove(); });   /* the hero keeps the logo of the page language */
+  $$('[data-lang]').forEach(function (l) { if (l.dataset.lang !== lang) l.remove(); });   /* each logo is kept only on the page of its language */
   $$('select[name=cc]').forEach(function (s) {
     s.innerHTML = CC.map(function (c) { return '<option value="' + c[0] + '">' + c[1] + ' ' + c[0] + '</option>'; }).join('');
   });
@@ -1321,12 +1326,13 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
   /* ---------- residences: types, layouts and plans ---------- */
   var tabs = $('#tabs'), varsEl = $('#vars'), roomsEl = $('#rooms'), planImg = $('#planImg'), planSheet = $('#planSheet'), planPhoto = $('#planPhoto'), planBig = $('#planBig');
   var layoutWord = lang === 'ar' ? 'التصميم ' : 'Layout ';
-  function planLabel() { var u = UNITS[currentUnit], multi = Object.keys(u.vars).length > 1; return u.name[L] + (multi ? ' · ' + layoutWord + currentVar : ''); }
+  var varName = function (k) { return lang === 'ar' ? { A: 'أ', B: 'ب', C: 'ج' }[k] : k; };   /* layouts read أ ب ج on the Arabic page */
+  function planLabel() { var u = UNITS[currentUnit], multi = Object.keys(u.vars).length > 1; return u.name[L] + (multi ? ' · ' + layoutWord + varName(currentVar) : ''); }
   function renderUnit() {
     var u = UNITS[currentUnit], v = u.vars[currentVar], keys = Object.keys(u.vars);
     $('#resName').textContent = u.name[L];
     $('#resText').textContent = u.text[L];
-    varsEl.innerHTML = keys.length > 1 ? keys.map(function (k) { return '<button class="var" type="button" aria-pressed="' + (k === currentVar) + '" data-var="' + k + '">' + layoutWord + k + '</button>'; }).join('') : '';
+    varsEl.innerHTML = keys.length > 1 ? keys.map(function (k) { return '<button class="var" type="button" aria-pressed="' + (k === currentVar) + '" data-var="' + k + '">' + layoutWord + varName(k) + '</button>'; }).join('') : '';
     varsEl.hidden = keys.length < 2;
     roomsEl.innerHTML = v[3].map(function (r) { return '<li>' + ROOMS[r][L] + '</li>'; }).join('');
   }
@@ -1554,6 +1560,27 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
   /* statement: words light up as you read */
   gsap.fromTo('.statement .w > span', { opacity: .16 }, { opacity: 1, stagger: .06, ease: 'none', scrollTrigger: { trigger: '.statement', start: 'top 82%', end: 'bottom 52%', scrub: true } });
 
+  /* ---------- Arabic developer logo: the letters rise from right to left, the long stroke is written out, the dot drops in and keeps floating ---------- */
+  (function () {
+    var lg = $('.amd-ar svg'); if (!lg) return;
+    var vb = lg.viewBox.baseVal, rect = $('#amk rect', lg), dot = $('.am-dot', lg), sub = $('.am-s', lg);
+    var risers = $$('.am-l', lg).filter(function (p) { return !p.classList.contains('am-k') && p !== dot; });
+    gsap.set(rect, { attr: { x: vb.width, width: 0 } });
+    gsap.set(risers, { y: vb.height * .42, opacity: 0 });
+    gsap.set(dot, { y: -vb.height * .5, rotation: 135, opacity: 0, transformOrigin: '50% 50%' });
+    gsap.set(sub, { y: vb.height * .16, opacity: 0 });
+    var float = gsap.to(dot, { y: -vb.height * .035, rotation: 8, duration: 2.2, ease: 'sine.inOut', yoyo: true, repeat: -1, paused: true });
+    var tl = gsap.timeline({ paused: true, onComplete: function () { float.play(); } })
+      .to(risers[0], { y: 0, opacity: 1, duration: 1, ease: 'expo.out' }, 0)
+      .to(rect, { attr: { x: 0, width: vb.width }, duration: 1.3, ease: 'power3.inOut' }, .12)
+      .to(risers.slice(1), { y: 0, opacity: 1, duration: 1, stagger: .12, ease: 'expo.out' }, .75)
+      .to(dot, { y: 0, rotation: 0, opacity: 1, duration: 1.1, ease: 'back.out(2.4)' }, 1.15)
+      .to(sub, { y: 0, opacity: 1, duration: 1.2, ease: 'expo.out' }, 1.25);
+    ScrollTrigger.create({ trigger: lg, start: 'top 88%', end: 'bottom top',
+      onEnter: function () { tl.play(); }, onEnterBack: function () { tl.play(); },
+      onToggle: function (st) { if (tl.progress() === 1) st.isActive ? float.play() : float.pause(); } });
+  })();
+
   /* ---------- story: each image wipes up over the last ---------- */
   (function () {
     var panels = $$('.story-panel');
@@ -1614,6 +1641,7 @@ html[lang=ar] .lightbox .lb-name{font:400 17px/1.5 var(--ar)}
       var sw = stage.clientWidth || innerWidth, sh = stage.clientHeight;
       var want = sw < 640 ? 46 : sw < 1100 ? 34 : 25;
       var count = Math.max(n, Math.round(360 / want));
+      if (count % n === 1) count += count - 1 >= n && Math.abs(360 / (count - 1) - want) <= Math.abs(360 / (count + 1) - want) ? -1 : 1;   /* never the same image twice side by side where the ring closes */
       A = 360 / count;
       R = sw < 640 ? sw * .8 : sw < 1100 ? sw * .7 : Math.min(sw * .6, 1250);
       H = sh;

@@ -14,7 +14,7 @@ Open `index.html` directly, or host it together with the `assets/` folder. Arabi
 | `index.html` | The whole page (HTML + CSS + JS inline, no frameworks). |
 | `assets/images/` | Every image the page uses, as WebP (nothing unused is kept). |
 | `assets/fonts/` | Radikal UltraThin, Light, Medium and Bold, and Noto Kufi Arabic (Arabic letters only), as WOFF2. The page loads no fonts from outside. |
-| `source/` | The original material, not loaded by the page: `brochure/` (EN and AR PDFs), `fonts/` (Radikal OTF, Noto Kufi TTF), `hero-layers/` (sky, cloud and building layers), `logos/` (English and Arabic logos), `renders/` (all project renders, named by what they show). |
+| `source/` | The original material, not loaded by the page: `brochure/` (EN and AR PDFs), `fonts/` (Radikal OTF, Noto Kufi TTF), `hero-layers/` (sky, cloud and building layers), `logos/` (Hawa logos in English and Arabic, and the Arabic Al Marwan logo), `renders/` (all project renders, named by what they show). |
 
 ## Page, top to bottom
 1. **Sky intro.** Six layers (sky, three cloud bands, the building and the logo) each drift and react to scrolling at their own speed.
@@ -23,9 +23,11 @@ Open `index.html` directly, or host it together with the `assets/` folder. Arabi
 2. **Offer + first form.** *Own your apartment today in Sharjah*: starting price, down payment, monthly payment and handover,
    then the project facts (268 apartments, 4 floors, 88,400 sq ft plot, 282 parking spaces).
 3. **Story.** Five images wipe up one after another inside a tall frame.
-4. **The Hawa Life.** Images on a curved ring that turns as you scroll.
+4. **The Hawa Life.** Seven images on a curved ring that turns as you scroll.
 5. **Courtyard scene**, **courtyards and retail**, **residences** (studio, 1 and 2 bedroom plans from the brochure),
-   **in every residence**, **location** (the project map from the brochure), **developer**, **final form**.
+   **in every residence**, **location** (the project map from the brochure, in Arabic on the Arabic page), **developer**, **final form**.
+   On the Arabic page the layouts read أ / ب / ج, and the developer section shows the Arabic Al Marwan logo: its letters rise from right
+   to left, the long stroke is written out, and the dot drops in and keeps floating gently.
 6. **Footer.** The District 11 Sales Office with a live Google map and a *Get directions* link.
 
 The header has **Call** and **Enquire**; phones and tablets get a Call + Enquire bar once the visitor is past the intro.
@@ -41,11 +43,11 @@ of the `<style>` (`:root`).
 | --- | --- |
 | Sky intro | `hero-sky`, `hero-building`, `hero-cloud-a/b/c` (each cloud band is the cloud plus its mirror, so it repeats without a seam). `source/hero-layers/clouds-3.png` contains a faint dashed line (a leftover path outline); `hero-cloud-c` has it painted out. |
 | Story 01–05 | `facade-front`, `courtyard-pool`, `living-room`, `bedroom-window`, `balcony-view` |
-| The Hawa Life ring | `pool-sunset`, `lounge-gathering`, `pool-lane`, `dining`, `pool-cabana`, `bedroom-view`, `cycle-track`, `lounge-corner` |
+| The Hawa Life ring | `pool-sunset`, `lounge-gathering`, `dining`, `pool-cabana`, `bedroom-view`, `cycle-track`, `lounge-corner` |
 | Courtyard scene | `pool-wide` (wide screens), `pool-woman` (upright screens) |
 | Courtyards / retail | `pool-lounger`, `kids-splash`, `retail-promenade`, `garden-walk` |
 | Residences | `plan-studio-a/b`, `plan-1br-a/b`, `plan-2br-a/b/c` + photos `bedroom`, `living-room`, `lounge-gathering` |
-| Location | `location-map` (square crop of the brochure map; the pulsing frame is `.map-pin` in the CSS) |
+| Location | `location-map` (English) and `location-map-ar` (Arabic): the same square crop of each brochure's map. The Arabic brochure prints the road as "E611"; `location-map-ar` has it corrected to E61. The pulsing frame is `.map-pin` in the CSS. |
 | Final form | `facade-golden` |
 
 To swap a picture, replace the file with one of the same name and shape. Residence types, layouts and room lists are in the
