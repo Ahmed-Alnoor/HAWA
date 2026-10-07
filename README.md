@@ -61,7 +61,7 @@ Edit the `CONFIG` block near the top of the `<script>` in `index.html`:
 | `formEndpoint` | URL that receives leads (e.g. a Google Sheet web app). **Empty for now:** the page runs in demo mode: leads are **not saved** (they are logged in the browser console) and no lead goal is reported to Metrika or other analytics. |
 | `phone` / `phoneDisplay` | Click-to-call number and how it is shown (800 61). |
 | `whatsapp` | WhatsApp number, digits only (e.g. `9715XXXXXXXX`). WhatsApp buttons stay hidden until this is set. |
-| `email` | Contact email (info@almarwandevelopments.com). |
+| `email` | Contact email (marketing@almarwandevelopments.com). |
 | `metrikaId` | Yandex Metrika counter `113514133`. Its tag is in `<head>`. Leads reach the goal `lead`; Call, WhatsApp and email clicks reach `contact_call`, `contact_whatsapp` and `contact_email`. |
 | `mapLink` | Where **Get directions** goes: the District 11 Sales Office in Google Maps. |
 | `mapQuery` | What the footer map shows: `District 11 Sales Office, Sheikh Mohammed Bin Zayed Rd, Muwaileh Commercial, Sharjah`. Put coordinates here instead (e.g. `25.30,55.45`, copied from Google Maps) to pin the exact spot. |
