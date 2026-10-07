@@ -58,7 +58,7 @@ Edit the `CONFIG` block near the top of the `<script>` in `index.html`:
 
 | Key | What it does |
 | --- | --- |
-| `formEndpoint` | URL that receives leads (e.g. a Google Sheet web app). **Empty for now:** the page runs in demo mode and leads are **not saved** (they are logged in the browser console). |
+| `formEndpoint` | URL that receives leads (e.g. a Google Sheet web app). **Empty for now:** the page runs in demo mode: leads are **not saved** (they are logged in the browser console) and no lead goal is reported to Metrika or other analytics. |
 | `phone` / `phoneDisplay` | Click-to-call number and how it is shown (800 61). |
 | `whatsapp` | WhatsApp number, digits only (e.g. `9715XXXXXXXX`). WhatsApp buttons stay hidden until this is set. |
 | `email` | Contact email (info@almarwandevelopments.com). |
@@ -68,7 +68,7 @@ Edit the `CONFIG` block near the top of the `<script>` in `index.html`:
 
 Prices and payment terms appear in the offer section (`#offer` in the HTML) and, in Arabic, in the `of.*` lines of the `AR` object.
 
-Each lead is posted as form fields: `project`, `name`, `phone` (with country code), `country_code`, `email`, `buyer_type`
+Each lead is posted as form fields: `project`, `name`, `phone` (one international number: a number typed with its own `+` or `00` keeps its code; otherwise the chosen code is added, and a leading 0 or a repeated code is dropped), `country_code`, `email`, `buyer_type`
 (home buyer / investor / broker), `unit` (Studio, 1 Bedroom, 2 Bedroom or not sure yet), `form` (hero, modal, final),
 `context` (e.g. `plans-2br-B`, `payment`, `visit`, `price`), `plan_viewed`, `language`, `page`, `referrer`, `submitted_at`
 and any UTM / gclid / fbclid values. The hidden `hawa_hp` field is a bot trap and should be ignored if filled.
