@@ -6,14 +6,14 @@ Tilal City, Sharjah: studio, 1 & 2 bedroom apartments from AED 592,000, 5% down 
 handover Q4 2028. Built on the same structure as the District 11 landing page. Motion runs on GSAP + ScrollTrigger and Lenis
 smooth scrolling, inlined in the file (GSAP Standard License, Lenis MIT).
 
-Open `index.html` directly, or host it together with the `assets/` folder. Arabic: add `?lang=ar` to the URL, or use the toggle.
+Open `index.html` directly, or host it together with the `assets/` folder. Those two are all a web host needs: `README.md` and `source/` stay in the repository. Arabic: add `?lang=ar` to the URL, or use the toggle.
 
 ## Folder
 | Path | What it is |
 | --- | --- |
 | `index.html` | The whole page (HTML + CSS + JS inline, no frameworks). |
 | `assets/images/` | Every image the page uses, as WebP (nothing unused is kept). |
-| `assets/fonts/` | Radikal UltraThin, Light, Medium and Bold, and Noto Kufi Arabic (Arabic letters only), as WOFF2. The page loads no fonts from outside. |
+| `assets/fonts/` | Radikal UltraThin, Light and Medium (Latin letters only) and Noto Kufi Arabic (Arabic letters only, weights 200–500), as WOFF2: only the weights and letters the page uses. The page loads no fonts from outside. |
 | `source/` | The original material, not loaded by the page: `brochure/` (EN and AR PDFs), `fonts/` (Radikal OTF, Noto Kufi TTF), `hero-layers/` (sky, cloud and building layers), `logos/` (Hawa logos in English and Arabic, and the Arabic Al Marwan logo), `renders/` (all project renders, named by what they show). |
 
 ## Page, top to bottom
@@ -62,7 +62,7 @@ Edit the `CONFIG` block near the top of the `<script>` in `index.html`:
 | `phone` / `phoneDisplay` | Click-to-call number and how it is shown (800 61). |
 | `whatsapp` | WhatsApp number, digits only (e.g. `9715XXXXXXXX`). WhatsApp buttons stay hidden until this is set. |
 | `email` | Contact email (info@almarwandevelopments.com). |
-| `metrikaId` | Yandex Metrika counter id, if a counter snippet is added to `<head>`. |
+| `metrikaId` | Yandex Metrika counter `113514133`. Its tag is in `<head>`. Leads reach the goal `lead`; Call, WhatsApp and email clicks reach `contact_call`, `contact_whatsapp` and `contact_email`. |
 | `mapLink` | Where **Get directions** goes: the District 11 Sales Office in Google Maps. |
 | `mapQuery` | What the footer map shows: `District 11 Sales Office, Sheikh Mohammed Bin Zayed Rd, Muwaileh Commercial, Sharjah`. Put coordinates here instead (e.g. `25.30,55.45`, copied from Google Maps) to pin the exact spot. |
 
